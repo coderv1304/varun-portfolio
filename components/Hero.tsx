@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 16 },
@@ -15,15 +16,26 @@ const fadeUp = {
 export default function Hero() {
   return (
     <section className="mx-auto max-w-6xl px-4 pb-20 pt-16 sm:pt-24">
-      <motion.p
-        variants={fadeUp}
-        initial="hidden"
-        animate="show"
-        custom={0}
-        className="font-mono text-xs uppercase tracking-[0.3em] text-blueprint"
-      >
-        // sre &amp; platform engineering
-      </motion.p>
+      <motion.div
+  variants={fadeUp}
+  initial="hidden"
+  animate="show"
+  custom={0}
+  className="flex items-center gap-4"
+>
+  <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-sm border border-blueprint/40 sm:h-24 sm:w-24">
+  <Image
+    src="https://avatars.githubusercontent.com/u/269889359?v=4"
+    alt="Varun Nair"
+    fill
+    sizes="96px"
+    className="object-cover"
+  />
+</div>
+  <p className="font-mono text-xs uppercase tracking-[0.3em] text-blueprint">
+    // sre &amp; platform engineering
+  </p>
+</motion.div>
 
       <motion.h1
         variants={fadeUp}
@@ -32,9 +44,11 @@ export default function Hero() {
         custom={1}
         className="mt-4 max-w-3xl font-mono text-4xl font-bold leading-tight text-ink text-glow sm:text-5xl md:text-6xl"
       >
-        Varun Nair builds systems{" "}
-        <span className="text-blueprint">that don&apos;t fall over</span>{" "}
-        at 3 AM.
+       Hi, I&apos;m Varun Nair.{" "}
+       <br />
+<span className="text-blueprint">
+  I design and build dependable systems for the infrastructure behind modern software.
+</span>
       </motion.h1>
 
       <motion.p
