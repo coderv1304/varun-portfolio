@@ -1,157 +1,71 @@
 "use client";
 
-import { useState, FormEvent } from "react";
+import { useState } from "react";
+import type { FormEvent } from "react";
 
-// 1. Go to https://formspree.io, sign up free, create a form.
-// 2. Copy the endpoint it gives you (looks like https://formspree.io/f/xxxxabcd).
-// 3. Paste it below, replacing the placeholder.
-const FORM_ENDPOINT = "https://formspree.io/f/xwlezway";
+export function ContactForm() {
+  const [state, setState] = useState<"idle" | "sending" | "success" | "error">("idle");
 
-type Status = "idle" | "loading" | "success" | "error";
+  async function submit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setState("sending");
 
-export default function ContactForm() {
-  const [status, setStatus] = useState<Status>("idle");
-
-  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    setStatus("loading");
-
-    const form = e.currentTarget;
-    const data = new FormData(form);
+    const form = event.currentTarget;
+    const body = new FormData(form);
 
     try {
-      const res = await fetch(FORM_ENDPOINT, {
+      const response = await fetch("/api/contact", {
         method: "POST",
-        headers: { Accept: "application/json" },
-        body: data,
+        body,
       });
 
-      if (res.ok) {
-        setStatus("success");
-        form.reset();
-      } else {
-        setStatus("error");
-      }
-    } catch {
-      setStatus("error");
-    }
-  }
+      if (!response.ok) throw new Error("Request failed");
 
-  if (status === "success") {
-    return (
-      <div className="panel-border rounded-sm bg-panel p-8 font-mono">
-        <p className="text-online">✓ message_sent: 200 OK</p>
-        <p className="mt-2 text-sm text-muted">
-          Thanks for reaching out — I&apos;ll respond within 24 hours.
-        </p>
-      </div>
-    );
+      form.reset();
+      setState("success");
+    } catch {
+      setState("error");
+    }
   }
 
   return (
     <form
-      onSubmit={handleSubmit}
-      className="panel-border space-y-5 rounded-sm bg-panel p-6 sm:p-8"
+      onSubmit={submit}
+      className="space-y-5 rounded-3xl border border-white/10 bg-white/[0.03] p-6 md:p-8"
     >
-      <Field label="name" htmlFor="name">
-        <input
-          id="name"
-          name="name"
-          type="text"
-          required
-          placeholder="Your full name"
-          className="field"
-        />
-      </Field>
+      <div className="grid gap-5 md:grid-cols-2">
+        <input name="name" required placeholder="Your name" className="field" />
+        <input name="email" required type="email" placeholder="Email address" className="field" />
+        <input name="phone" type="tel" placeholder="Contact number" className="field" />
+        <input name="company" placeholder="Company / organization" className="field" />
+      </div>
 
-      <Field label="email" htmlFor="email">
-        <input
-          id="email"
-          name="email"
-          type="email"
-          required
-          placeholder="you@company.com"
-          className="field"
-        />
-      </Field>
-
-      <Field label="phone" htmlFor="phone">
-        <input
-          id="phone"
-          name="phone"
-          type="tel"
-          placeholder="+91 XXXXX XXXXX (optional)"
-          className="field"
-        />
-      </Field>
-
-      <Field label="requirements" htmlFor="requirements">
-        <textarea
-          id="requirements"
-          name="requirements"
-          required
-          rows={5}
-          placeholder="What are you looking for — internship, full-time role, freelance project? Tell me a bit about it."
-          className="field resize-none"
-        />
-      </Field>
+      <textarea
+        name="requirements"
+        required
+        rows={7}
+        placeholder="Tell me about the role, internship, project or requirements..."
+        className="field w-full resize-y"
+      />
 
       <button
-        type="submit"
-        disabled={status === "loading"}
-        className="w-full rounded-sm bg-blueprint px-5 py-3 font-mono text-sm font-medium text-base transition-transform hover:-translate-y-0.5 hover:bg-blueprint/90 disabled:cursor-not-allowed disabled:opacity-60"
+        disabled={state === "sending"}
+        className="w-full rounded-2xl bg-cyan-400 px-6 py-4 font-bold text-black transition hover:bg-cyan-300 disabled:cursor-wait disabled:opacity-60"
       >
-        {status === "loading" ? "sending..." : "send message →"}
+        {state === "sending" ? "SENDING..." : "SEND MESSAGE →"}
       </button>
 
-      {status === "error" && (
-        <p className="font-mono text-xs text-alert">
-          ✗ send_failed: check FORM_ENDPOINT is set up correctly, then retry.
+      {state === "success" && (
+        <p className="text-center text-sm text-green-300">
+          Message sent. Thanks for reaching out.
         </p>
       )}
 
-      <style jsx global>{`
-        .field {
-          width: 100%;
-          background: #0d1622;
-          border: 1px solid rgba(140, 170, 210, 0.14);
-          border-radius: 2px;
-          padding: 0.7rem 0.85rem;
-          color: #e7ecf3;
-          font-family: var(--font-sans);
-          font-size: 0.9rem;
-        }
-        .field::placeholder {
-          color: #5b6478;
-        }
-        .field:focus {
-          outline: none;
-          border-color: #4c9fff;
-          box-shadow: 0 0 0 3px rgba(76, 159, 255, 0.15);
-        }
-      `}</style>
+      {state === "error" && (
+        <p className="text-center text-sm text-red-300">
+          Something went wrong. Please email me directly at coderv13@gmail.com.
+        </p>
+      )}
     </form>
-  );
-}
-
-function Field({
-  label,
-  htmlFor,
-  children,
-}: {
-  label: string;
-  htmlFor: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <div>
-      <label
-        htmlFor={htmlFor}
-        className="mb-1.5 block font-mono text-xs uppercase tracking-wider text-faint"
-      >
-        {label}
-      </label>
-      {children}
-    </div>
   );
 }
