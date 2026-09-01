@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { site } from "@/data/site";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -23,7 +24,7 @@ export default function Navbar() {
         </nav>
 
         <a
-          href="/resume.pdf"
+          href={site.resume}
           target="_blank"
           rel="noreferrer"
           className="nav-resume"

@@ -14,7 +14,7 @@ export const site = {
   hashnode:
     "https://varun-nair-13.hashnode.dev/",
 
-  resume: "/resume.pdf",
+  resume: "/Varun_Nair_Resume (1).pdf",
 
   education: {
     bachelors: "B.Sc Information Technology",
