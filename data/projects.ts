@@ -12,37 +12,51 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    slug: "devops-project",
-    title: "Your DevOps Project",
-    category: "DEVOPS / CI-CD",
+    slug: "cipher-watch",
+    title: "Cipher-Watch",
+    category: "DEVOPS / LINUX AUTOMATION",
     description:
-      "Replace this with your strongest DevOps project: explain the problem, automation, deployment flow and result.",
+      "Linux administration project focused on Bash automation, systemd service timers, PBKDF2 AES-256 encryption, and operational monitoring workflows.",
     longDescription:
-      "Use this project page as a technical case study. Describe the problem you solved, architecture, implementation, security considerations, deployment process and measurable outcome.",
-    tech: ["Git", "Docker", "CI/CD", "Linux"],
-    github: "https://github.com/coderv1304",
+      "Cipher-Watch is a comprehensive Linux administration project focused on Bash automation, systemd background timers, and operational monitoring workflows. Designed for hardened server infrastructure, featuring AES-256 PBKDF2 encrypted backups, automated restore-testing, log rotation, and statistical anomaly detection.",
+    tech: ["Bash", "Linux", "systemd", "AES-256", "Security"],
+    github: "https://github.com/coderv1304/Cipher-Watch",
     featured: true,
   },
   {
-    slug: "cloud-project",
-    title: "Your Cloud Project",
-    category: "CLOUD / INFRASTRUCTURE",
+    slug: "network-anomaly-detection",
+    title: "Network Anomaly Detection",
+    category: "MLOPS / SECURITY",
     description:
-      "Showcase a cloud project with architecture, infrastructure, automation and observability.",
+      "ML-based intrusion detection engine using Random Forest trained on CIC-IDS-2017 with sub-millisecond inference and Docker CI/CD pipelines.",
     longDescription:
-      "Replace this text with the actual story of your cloud project. Explain why you chose the architecture and how you deployed and monitored it.",
-    tech: ["Cloud", "Python", "Linux"],
-    github: "https://github.com/coderv1304",
+      "A project centered around detecting unusual network behavior and supporting observability in distributed systems. Features ML-based intrusion detection using Random Forest trained on CIC-IDS-2017 with sub-millisecond inference, containerized with Docker, and protected by a GitHub Actions pipeline with automated security scanning (Bandit, pip-audit).",
+    tech: ["Python", "scikit-learn", "Docker", "Security", "CI/CD"],
+    github: "https://github.com/coderv1304/network-anomaly-detection",
+    featured: true,
   },
   {
-    slug: "mlops-project",
-    title: "Your MLOps Project",
-    category: "MLOPS / AI",
+    slug: "varun-portfolio",
+    title: "Varun Portfolio",
+    category: "CLOUD / INFRASTRUCTURE",
     description:
-      "Showcase an ML workflow, model deployment pipeline, automation or intelligent operations project.",
+      "Personal DevOps & Cloud portfolio built with Next.js 14 and TypeScript, styled like a futuristic operations control dashboard.",
     longDescription:
-      "Replace this text with your actual MLOps or AI project details. Include model lifecycle, CI/CD, deployment and monitoring if applicable.",
-    tech: ["Python", "MLOps", "Automation"],
-    github: "https://github.com/coderv1304",
+      "Personal portfolio website built with Next.js 14, React, and TypeScript. Styled like a high-tech DevOps operations console with glassmorphic cards, live status telemetry, terminal emulation, responsive layouts, and modern web aesthetics.",
+    tech: ["Next.js", "TypeScript", "React", "Tailwind CSS", "Vercel"],
+    github: "https://github.com/coderv1304/varun-portfolio",
+    featured: true,
+  },
+  {
+    slug: "dsa",
+    title: "Data Structures & Algorithms",
+    category: "CORE / ALGORITHMS",
+    description:
+      "Repository for data structures and algorithm practice, covering problem solving, graph algorithms, and system performance optimization.",
+    longDescription:
+      "Core computer science repository covering algorithm design, data structures, space-time complexity analysis, graph algorithms, dynamic programming, and competitive programming solutions implemented with high efficiency.",
+    tech: ["C++", "Python", "Algorithms", "Data Structures"],
+    github: "https://github.com/coderv1304/DSA",
+    featured: false,
   },
 ];

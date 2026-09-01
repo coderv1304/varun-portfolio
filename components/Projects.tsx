@@ -2,38 +2,38 @@ const projects = [
   {
     id: "01",
     status: "SHIPPED",
-    title: "Linux Administration Toolkit",
+    title: "Cipher-Watch",
     description:
-      "Five production-style Bash scripts — backup, monitor, dependency checks, user management, and log rotation. Hardened with AES-256 encryption (PBKDF2), automated restore-testing, statistical anomaly detection, and systemd service/timer integration.",
-    tags: ["Bash", "systemd", "AES-256", "shellcheck"],
-    href: "https://github.com/coderv1304/linux-administration",
+      "Production-grade Linux admin toolkit — backup, monitor, dependency checks, user management, and log rotation. Hardened with AES-256 PBKDF2 encryption, automated restore-testing, and systemd service/timer integration.",
+    tags: ["Bash", "Linux", "systemd", "AES-256", "Security"],
+    href: "https://github.com/coderv1304/Cipher-Watch",
   },
   {
     id: "02",
     status: "SHIPPED",
-    title: "Dockerized Admin Services",
+    title: "Network Anomaly Detection",
     description:
-      "Containerized the Linux admin toolkit into backup + monitor services with Docker Compose. Production-grade CI: hadolint & shellcheck linting, bats test suite, SBOM via syft, multi-arch builds, and image signing with cosign, plus full governance docs.",
-    tags: ["Docker", "GitHub Actions", "SBOM", "cosign"],
-    href: "https://github.com/coderv1304",
+      "ML-based intrusion detection engine using Random Forest trained on CIC-IDS-2017 with sub-millisecond inference. Shipped with Docker packaging and GitHub Actions security pipelines (Bandit, pip-audit).",
+    tags: ["Python", "scikit-learn", "Docker", "Security", "CI/CD"],
+    href: "https://github.com/coderv1304/network-anomaly-detection",
   },
   {
     id: "03",
     status: "SHIPPED",
-    title: "Network Anomaly Detection",
+    title: "Varun Portfolio",
     description:
-      "ML-based intrusion detection using a Random Forest model trained on CIC-IDS-2017, with sub-millisecond inference. Shipped with Docker packaging and a GitHub Actions pipeline running Bandit and pip-audit for supply-chain security.",
-    tags: ["Python", "scikit-learn", "Docker", "Security"],
-    href: "https://github.com/coderv1304/network-anomaly-detection",
+      "Personal DevOps & Cloud portfolio built with Next.js 14 and TypeScript, styled like a futuristic operations control dashboard with live telemetry and interactive widgets.",
+    tags: ["Next.js", "TypeScript", "React", "Tailwind CSS", "Vercel"],
+    href: "https://github.com/coderv1304/varun-portfolio",
   },
   {
     id: "04",
-    status: "IN PROGRESS",
-    title: "Kubernetes & IaC",
+    status: "SHIPPED",
+    title: "Data Structures & Algorithms",
     description:
-      "Next in the roadmap — deploying the containerized services onto Kubernetes, with Terraform-managed AWS infrastructure underneath.",
-    tags: ["Kubernetes", "Terraform", "AWS"],
-    href: "https://github.com/coderv1304",
+      "Core computer science repository covering algorithm design, data structures, space-time complexity analysis, graph algorithms, and problem solving in C++ and Python.",
+    tags: ["C++", "Python", "Algorithms", "Data Structures"],
+    href: "https://github.com/coderv1304/DSA",
   },
 ];
 
