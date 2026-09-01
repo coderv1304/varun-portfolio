@@ -1,35 +1,97 @@
-import { Mail, Linkedin, Github } from "lucide-react";
-import { PageShell } from "@/components/PageShell";
-import { ContactForm } from "@/components/ContactForm";
+import ContactForm from "@/components/ContactForm";
 import { site } from "@/data/site";
 
 export default function ContactPage() {
   return (
-    <PageShell>
-      <p className="font-mono text-xs tracking-[0.3em] text-cyan-400">05 / CONTACT</p>
-      <h1 className="mt-4 text-5xl font-black">Let&apos;s connect.</h1>
-      <p className="mt-5 max-w-2xl text-slate-500">
-        Recruiter, hiring manager, collaborator or someone with an interesting project? Send the details below.
+    <main className="page">
+      <div className="eyebrow">
+        04 / ESTABLISH CONNECTION
+      </div>
+
+      <h1 className="heading">
+        Let&apos;s build something
+        <span className="gradient-text">
+          {" "}
+          useful.
+        </span>
+      </h1>
+
+      <p className="subheading">
+        Recruiter, hiring manager, collaborator or
+        someone with an interesting infrastructure
+        challenge? Send me the details.
       </p>
 
-      <div className="mt-12 grid gap-6 lg:grid-cols-[.7fr_1.3fr]">
-        <div className="space-y-5">
-          <a href={`mailto:${site.email}`} className="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.03] p-5 hover:border-cyan-400/30">
-            <Mail className="text-cyan-400" />
-            <span>{site.email}</span>
-          </a>
-          <a href={site.github} target="_blank" rel="noreferrer" className="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.03] p-5 hover:border-cyan-400/30">
-            <Github className="text-cyan-400" />
-            <span>GitHub</span>
-          </a>
-          <a href={site.linkedin} target="_blank" rel="noreferrer" className="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.03] p-5 hover:border-cyan-400/30">
-            <Linkedin className="text-cyan-400" />
-            <span>LinkedIn</span>
-          </a>
-        </div>
+      <div className="contact-layout">
+        <section className="contact-card">
+          <div className="eyebrow">
+            DIRECT CHANNELS
+          </div>
 
-        <ContactForm />
+          <div className="contact-links">
+            <a
+              className="contact-link"
+              href={`mailto:${site.email}`}
+            >
+              EMAIL
+              <br />
+              {site.email}
+            </a>
+
+            <a
+              className="contact-link"
+              href={site.linkedin}
+              target="_blank"
+              rel="noreferrer"
+            >
+              LINKEDIN
+              <br />
+              Connect with me
+            </a>
+
+            <a
+              className="contact-link"
+              href={site.github}
+              target="_blank"
+              rel="noreferrer"
+            >
+              GITHUB
+              <br />
+              View my repositories
+            </a>
+
+            <a
+              className="contact-link"
+              href={site.hashnode}
+              target="_blank"
+              rel="noreferrer"
+            >
+              HASHNODE
+              <br />
+              Read my technical writing
+            </a>
+          </div>
+        </section>
+
+        <section className="form-card">
+          <div className="eyebrow">
+            RECRUITER / CLIENT FORM
+          </div>
+
+          <h2 style={{ marginTop: 12 }}>
+            Send a message
+          </h2>
+
+          <p className="info-label">
+            Please provide your name, email, contact number
+            and requirements.
+          </p>
+
+          <div style={{ marginTop: 30 }}>
+            <ContactForm />
+          </div>
+        </section>
       </div>
-    </PageShell>
+    </main>
   );
 }

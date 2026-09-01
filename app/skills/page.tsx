@@ -1,29 +1,98 @@
-import { PageShell } from "@/components/PageShell";
-import { skillGroups } from "@/data/skills";
+const skillGroups = [
+  {
+    title: "DEVOPS",
+    skills: [
+      "Git",
+      "GitHub",
+      "CI/CD",
+      "Docker",
+      "Linux",
+      "Automation",
+    ],
+  },
+  {
+    title: "CLOUD",
+    skills: [
+      "Cloud Computing",
+      "Infrastructure",
+      "Deployment",
+      "Networking",
+      "Monitoring",
+    ],
+  },
+  {
+    title: "DEVSECOPS",
+    skills: [
+      "Security",
+      "SAST",
+      "Secure CI/CD",
+      "Vulnerability Management",
+    ],
+  },
+  {
+    title: "MLOPS / AIOPS",
+    skills: [
+      "Python",
+      "Machine Learning Operations",
+      "Automation",
+      "Monitoring",
+      "Intelligent Operations",
+    ],
+  },
+  {
+    title: "PROGRAMMING",
+    skills: [
+      "Python",
+      "Java",
+      "JavaScript",
+      "TypeScript",
+      "SQL",
+    ],
+  },
+  {
+    title: "FUNDAMENTALS",
+    skills: [
+      "Linux",
+      "Networking",
+      "Operating Systems",
+      "Databases",
+      "Computer Networks",
+    ],
+  },
+];
 
 export default function SkillsPage() {
   return (
-    <PageShell>
-      <p className="font-mono text-xs tracking-[0.3em] text-cyan-400">03 / TOOLKIT</p>
-      <h1 className="mt-4 text-5xl font-black">Technology Stack</h1>
-
-      <div className="mt-12 grid gap-5 md:grid-cols-2">
-        {skillGroups.map((group) => (
-          <div key={group.title} className="rounded-3xl border border-white/10 bg-white/[0.03] p-7">
-            <p className="font-mono text-xs tracking-[0.2em] text-cyan-400">{group.title}</p>
-            <h2 className="mt-3 text-xl font-bold">{group.description}</h2>
-            <div className="mt-6 flex flex-wrap gap-2">
-              {group.skills.map((skill) => (
-                <span key={skill} className="rounded-full border border-white/10 px-4 py-2 text-sm text-slate-300">{skill}</span>
-              ))}
-            </div>
-          </div>
-        ))}
+    <main className="page">
+      <div className="eyebrow">
+        03 / TECHNOLOGY STACK
       </div>
 
-      <p className="mt-8 text-sm text-slate-600">
-        Keep this page honest: only list technologies you have actually used or clearly label technologies you are currently learning.
+      <h1 className="heading">
+        Skills<span className="gradient-text">.</span>
+      </h1>
+
+      <p className="subheading">
+        A continuously expanding technology stack focused
+        on infrastructure, automation, security and
+        intelligent systems.
       </p>
-    </PageShell>
+
+      <div className="skills-grid">
+        {skillGroups.map((group) => (
+          <section className="skill-panel" key={group.title}>
+            <h3>{group.title}</h3>
+
+            <div className="skill-items">
+              {group.skills.map((skill) => (
+                <span className="skill-item" key={skill}>
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </section>
+        ))}
+      </div>
+    </main>
   );
 }

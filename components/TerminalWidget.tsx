@@ -1,85 +1,105 @@
 "use client";
 
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
 
-const commands: Record<string, string> = {
-  whoami: "Varun Nair — MCA @ VESIT Mumbai — DevOps / Cloud / DevSecOps",
-  skills: "DevOps · Cloud · DevSecOps · MLOps · AIOps · Linux · Git · Docker",
-  contact: "Opening contact page...",
-  projects: "Opening project index...",
-  clear: "",
-};
-
-export function TerminalWidget() {
-  const [input, setInput] = useState("");
-  const [lines, setLines] = useState<string[]>([
-    "varun@portfolio:~$ type 'help' to see commands.",
-  ]);
+export default function TerminalWidget() {
   const router = useRouter();
 
-  function runCommand(raw: string) {
-    const command = raw.trim().toLowerCase();
-    if (!command) return;
+  const [input, setInput] = useState("");
+
+  const [lines, setLines] = useState<string[]>([
+    "varun@portfolio:~$ welcome to Varun's portfolio.",
+    "Type 'help' to see available commands.",
+  ]);
+
+  function runCommand(event: FormEvent) {
+    event.preventDefault();
+
+    const command = input.trim().toLowerCase();
+
+    if (!command) {
+      return;
+    }
+
+    if (command === "clear") {
+      setLines([]);
+      setInput("");
+      return;
+    }
 
     if (command === "contact") {
       router.push("/contact");
       return;
     }
+
     if (command === "projects") {
       router.push("/projects");
       return;
     }
-    if (command === "help") {
-      setLines((v) => [
-        ...v,
-        `varun@portfolio:~$ ${command}`,
-        "Available: whoami, skills, projects, contact, clear",
-      ]);
-      return;
-    }
-    if (command === "clear") {
-      setLines([]);
-      return;
+
+    let response = "";
+
+    switch (command) {
+      case "help":
+        response =
+          "Commands: whoami, skills, projects, contact, clear";
+        break;
+
+      case "whoami":
+        response =
+          "Varun Nair — MCA @ VESIT Mumbai — DevOps / Cloud / DevSecOps";
+        break;
+
+      case "skills":
+        response =
+          "Linux · Git · Docker · Kubernetes · Cloud · CI/CD · Security · MLOps";
+        break;
+
+      default:
+        response = `Command not found: ${command}`;
     }
 
-    setLines((v) => [
-      ...v,
+    setLines((current) => [
+      ...current,
       `varun@portfolio:~$ ${command}`,
-      commands[command] ?? `Command not found: ${command}`,
+      response,
     ]);
+
+    setInput("");
   }
 
   return (
-    <div className="overflow-hidden rounded-3xl border border-white/10 bg-black/35 shadow-2xl backdrop-blur-xl">
-      <div className="flex items-center gap-2 border-b border-white/10 px-5 py-4">
-        <span className="h-3 w-3 rounded-full bg-red-400/80" />
-        <span className="h-3 w-3 rounded-full bg-yellow-400/80" />
-        <span className="h-3 w-3 rounded-full bg-green-400/80" />
-        <span className="ml-3 font-mono text-xs text-slate-500">terminal</span>
+    <div className="widget">
+      <div className="widget-header">
+        <span className="terminal-dot dot-red" />
+        <span className="terminal-dot dot-yellow" />
+        <span className="terminal-dot dot-green" />
+        <span className="widget-title">
+          varun@portfolio — terminal
+        </span>
       </div>
 
-      <div className="h-64 overflow-y-auto p-5 font-mono text-xs leading-6">
-        {lines.map((line, i) => (
-          <p key={`${line}-${i}`} className="text-slate-400">
-            {line}
-          </p>
-        ))}
+      <div className="terminal-body">
+        <div className="terminal-lines">
+          {lines.map((line, index) => (
+            <p className="terminal-line" key={`${line}-${index}`}>
+              {line}
+            </p>
+          ))}
+        </div>
 
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            runCommand(input);
-            setInput("");
-          }}
-          className="mt-2 flex items-center gap-2"
-        >
-          <span className="text-cyan-400">varun@portfolio:~$</span>
+        <form className="terminal-form" onSubmit={runCommand}>
+          <span className="terminal-prompt">
+            varun@portfolio:~$
+          </span>
+
           <input
+            className="terminal-input"
             value={input}
-            onChange={(e) => setInput(e.target.value)}
-            className="min-w-0 flex-1 bg-transparent text-white outline-none"
+            onChange={(event) => setInput(event.target.value)}
             autoComplete="off"
+            spellCheck={false}
             aria-label="Terminal command"
           />
         </form>

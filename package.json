@@ -1,28 +1,27 @@
 {
-  "name": "varun-nair-portfolio",
+  "name": "varun-portfolio",
   "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "start": "next start"
   },
   "dependencies": {
-    "framer-motion": "^11.18.2",
+    "autoprefixer": "^10.5.4",
+    "framer-motion": "^13.1.1",
     "lucide-react": "^1.35.0",
     "next": "14.2.35",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "resend": "^6.24.0"
+    "postcss": "^8.5.26",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
-    "@types/node": "^20.14.15",
-    "@types/react": "^18.3.3",
-    "@types/react-dom": "^18.3.0",
-    "autoprefixer": "^10.4.20",
-    "postcss": "^8.4.41",
-    "tailwindcss": "^3.4.9",
-    "typescript": "^5.5.4"
+    "@tailwindcss/postcss": "^4.3.3",
+    "@types/node": "20.17.30",
+    "@types/react": "18.3.18",
+    "@types/react-dom": "18.3.5",
+    "typescript": "5.7.3"
   }
 }

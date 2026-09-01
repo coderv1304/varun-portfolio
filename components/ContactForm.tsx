@@ -1,71 +1,135 @@
 "use client";
 
-import { useState } from "react";
-import type { FormEvent } from "react";
+import { FormEvent, useState } from "react";
 
-export function ContactForm() {
-  const [state, setState] = useState<"idle" | "sending" | "success" | "error">("idle");
+export default function ContactForm() {
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
+  const [success, setSuccess] = useState(false);
 
-  async function submit(event: FormEvent<HTMLFormElement>) {
+  async function submitForm(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setState("sending");
+
+    setLoading(true);
+    setMessage("");
+    setSuccess(false);
 
     const form = event.currentTarget;
-    const body = new FormData(form);
+
+    const formData = new FormData(form);
+
+    const payload = {
+      name: formData.get("name"),
+      email: formData.get("email"),
+      phone: formData.get("phone"),
+      requirements: formData.get("requirements"),
+    };
 
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
-        body,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
       });
 
-      if (!response.ok) throw new Error("Request failed");
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(
+          result.message || "Unable to send message."
+        );
+      }
+
+      setSuccess(true);
+      setMessage(
+        "Message received. Thank you for reaching out."
+      );
 
       form.reset();
-      setState("success");
-    } catch {
-      setState("error");
+    } catch (error) {
+      setMessage(
+        error instanceof Error
+          ? error.message
+          : "Something went wrong."
+      );
+    } finally {
+      setLoading(false);
     }
   }
 
   return (
-    <form
-      onSubmit={submit}
-      className="space-y-5 rounded-3xl border border-white/10 bg-white/[0.03] p-6 md:p-8"
-    >
-      <div className="grid gap-5 md:grid-cols-2">
-        <input name="name" required placeholder="Your name" className="field" />
-        <input name="email" required type="email" placeholder="Email address" className="field" />
-        <input name="phone" type="tel" placeholder="Contact number" className="field" />
-        <input name="company" placeholder="Company / organization" className="field" />
+    <form className="form-grid" onSubmit={submitForm}>
+      <div className="form-field">
+        <label htmlFor="name">
+          YOUR NAME *
+        </label>
+
+        <input
+          id="name"
+          name="name"
+          required
+          placeholder="John Doe"
+        />
       </div>
 
-      <textarea
-        name="requirements"
-        required
-        rows={7}
-        placeholder="Tell me about the role, internship, project or requirements..."
-        className="field w-full resize-y"
-      />
+      <div className="form-field">
+        <label htmlFor="email">
+          EMAIL ADDRESS *
+        </label>
+
+        <input
+          id="email"
+          name="email"
+          type="email"
+          required
+          placeholder="john@example.com"
+        />
+      </div>
+
+      <div className="form-field">
+        <label htmlFor="phone">
+          CONTACT NUMBER
+        </label>
+
+        <input
+          id="phone"
+          name="phone"
+          placeholder="+91 XXXXX XXXXX"
+        />
+      </div>
+
+      <div className="form-field">
+        <label htmlFor="requirements">
+          REQUIREMENTS / MESSAGE *
+        </label>
+
+        <textarea
+          id="requirements"
+          name="requirements"
+          required
+          placeholder="Tell me about the opportunity, project or requirement..."
+        />
+      </div>
+
+      {message && (
+        <div
+          className={`form-status ${
+            success ? "form-success" : "form-error"
+          }`}
+        >
+          {message}
+        </div>
+      )}
 
       <button
-        disabled={state === "sending"}
-        className="w-full rounded-2xl bg-cyan-400 px-6 py-4 font-bold text-black transition hover:bg-cyan-300 disabled:cursor-wait disabled:opacity-60"
+        type="submit"
+        className="button button-primary"
+        disabled={loading}
       >
-        {state === "sending" ? "SENDING..." : "SEND MESSAGE →"}
+        {loading ? "TRANSMITTING..." : "SEND MESSAGE →"}
       </button>
-
-      {state === "success" && (
-        <p className="text-center text-sm text-green-300">
-          Message sent. Thanks for reaching out.
-        </p>
-      )}
-
-      {state === "error" && (
-        <p className="text-center text-sm text-red-300">
-          Something went wrong. Please email me directly at coderv13@gmail.com.
-        </p>
-      )}
     </form>
   );
 }

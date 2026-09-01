@@ -1,28 +1,33 @@
-export function StatusWidget() {
-  return (
-    <div className="rounded-3xl border border-white/10 bg-white/[0.035] p-6 backdrop-blur-xl">
-      <div className="mb-5 flex items-center justify-between">
-        <span className="font-mono text-xs tracking-[0.2em] text-slate-500">
-          SYSTEM STATUS
-        </span>
-        <span className="flex items-center gap-2 text-xs text-green-300">
-          <span className="h-2 w-2 animate-pulse rounded-full bg-green-400" />
-          ONLINE
-        </span>
-      </div>
+export default function StatusWidget() {
+  const status = [
+    ["AVAILABILITY", "OPEN"],
+    ["EDUCATION", "MCA @ VESIT"],
+    ["CGPA", "8.5"],
+    ["FOCUS", "DEVOPS / CLOUD"],
+  ];
 
-      <div className="space-y-4 font-mono text-xs">
-        {[
-          ["AVAILABILITY", "OPEN"],
-          ["MCA", "VESIT MUMBAI"],
-          ["CGPA", "8.5"],
-          ["FOCUS", "DEVOPS / CLOUD"],
-        ].map(([key, value]) => (
-          <div key={key} className="flex justify-between gap-4">
-            <span className="text-slate-500">{key}</span>
-            <span className="text-slate-200">{value}</span>
-          </div>
-        ))}
+  return (
+    <div className="widget">
+      <div className="status-body">
+        <div className="status-top">
+          <span className="status-label">
+            SYSTEM STATUS
+          </span>
+
+          <span className="online">
+            <span className="pulse" />
+            ONLINE
+          </span>
+        </div>
+
+        <div className="status-list">
+          {status.map(([key, value]) => (
+            <div className="status-row" key={key}>
+              <span>{key}</span>
+              <span>{value}</span>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
