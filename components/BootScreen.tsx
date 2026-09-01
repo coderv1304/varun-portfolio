@@ -3,24 +3,27 @@
 import { useEffect, useState } from "react";
 
 export default function BootScreen() {
-  // Check if we have already seen the boot screen
-  let alreadySeen = false;
-  try {
-    alreadySeen = !!sessionStorage.getItem("varun-portfolio-boot");
-  } catch {
-    // If storage is unavailable, assume we haven't seen it
-    alreadySeen = false;
-  }
-
-  if (alreadySeen) {
-    return null;
-  }
-
   const [progress, setProgress] = useState(0);
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
+    let alreadySeen = false;
+
+    try {
+      alreadySeen = !!window.sessionStorage.getItem(
+        "varun-portfolio-boot"
+      );
+    } catch {
+      // If storage is unavailable, show the boot screen normally.
+    }
+
+    if (alreadySeen) {
+      setVisible(false);
+      return;
+    }
+
     const start = Date.now();
+    let hideTimer: number | undefined;
 
     const timer = window.setInterval(() => {
       const elapsed = Date.now() - start;
@@ -35,7 +38,7 @@ export default function BootScreen() {
         window.clearInterval(timer);
 
         try {
-          sessionStorage.setItem(
+          window.sessionStorage.setItem(
             "varun-portfolio-boot",
             "true"
           );
@@ -43,13 +46,19 @@ export default function BootScreen() {
           // Ignore storage errors.
         }
 
-        window.setTimeout(() => {
+        hideTimer = window.setTimeout(() => {
           setVisible(false);
         }, 450);
       }
     }, 30);
 
-    return () => window.clearInterval(timer);
+    return () => {
+      window.clearInterval(timer);
+
+      if (hideTimer !== undefined) {
+        window.clearTimeout(hideTimer);
+      }
+    };
   }, []);
 
   if (!visible) {
