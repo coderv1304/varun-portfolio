@@ -11,7 +11,7 @@ export default function BlogPage() {
         I&apos;ll publish DevOps, cloud, automation, security and AI operations notes here.
       </p>
 
-      
+      <a
         href={site.hashnode}
         target="_blank"
         rel="noreferrer"
