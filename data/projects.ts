@@ -36,6 +36,18 @@ export const projects: Project[] = [
     featured: true,
   },
   {
+    slug: "incident-command-center",
+    title: "Incident Command Center",
+    category: "DEVOPS / INCIDENT MANAGEMENT",
+    description:
+      "Full-stack incident management platform built with JavaScript, Java, and Terraform (HCL) — real-time alerting, runbook automation, and multi-cloud infrastructure provisioning.",
+    longDescription:
+      "Incident Command Center is a production-grade incident management and operations platform. Features real-time alerting dashboards, automated runbook execution, on-call scheduling, and multi-cloud infrastructure provisioning via Terraform HCL. Built with a JavaScript/Node.js frontend, Java backend services, and Python automation scripts. Forked and used by the wider community.",
+    tech: ["JavaScript", "Java", "Terraform", "HCL", "Python", "CSS"],
+    github: "https://github.com/coderv1304/incident-command-center",
+    featured: true,
+  },
+  {
     slug: "varun-portfolio",
     title: "Varun Portfolio",
     category: "CLOUD / INFRASTRUCTURE",
@@ -45,6 +57,7 @@ export const projects: Project[] = [
       "Personal portfolio website built with Next.js 14, React, and TypeScript. Styled like a high-tech DevOps operations console with glassmorphic cards, live status telemetry, terminal emulation, responsive layouts, and modern web aesthetics.",
     tech: ["Next.js", "TypeScript", "React", "Tailwind CSS", "Vercel"],
     github: "https://github.com/coderv1304/varun-portfolio",
+    demo: "https://varun-portfolio-rouge.vercel.app",
     featured: true,
   },
   {

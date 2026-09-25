@@ -20,6 +20,15 @@ const projects = [
   {
     id: "03",
     status: "SHIPPED",
+    title: "Incident Command Center",
+    description:
+      "Full-stack incident management platform with real-time alerting dashboards, automated runbook execution, on-call scheduling, and multi-cloud infrastructure provisioning via Terraform. Forked by the community.",
+    tags: ["JavaScript", "Java", "Terraform", "HCL", "Python"],
+    href: "https://github.com/coderv1304/incident-command-center",
+  },
+  {
+    id: "04",
+    status: "SHIPPED",
     title: "Varun Portfolio",
     description:
       "Personal DevOps & Cloud portfolio built with Next.js 14 and TypeScript, styled like a futuristic operations control dashboard with live telemetry and interactive widgets.",
@@ -27,7 +36,7 @@ const projects = [
     href: "https://github.com/coderv1304/varun-portfolio",
   },
   {
-    id: "04",
+    id: "05",
     status: "SHIPPED",
     title: "Data Structures & Algorithms",
     description:
@@ -44,12 +53,13 @@ export default function Projects() {
         // projects
       </p>
       <h2 className="mt-3 font-mono text-2xl font-bold text-ink sm:text-3xl">
-        Cipher-Watch portfolio
+        GitHub Projects
       </h2>
       <p className="mt-3 max-w-2xl text-muted">
-        A 6-project build, structured under one umbrella repo. Each project
-        is designed, hardened, and documented like it&apos;s going into a
-        real environment — not left as a tutorial checkbox.
+        5 public repositories — each designed, hardened, and documented
+        like it&apos;s going into a real environment. From Linux security
+        automation to ML-driven threat detection and multi-cloud incident
+        management.
       </p>
 
       <div className="mt-10 grid gap-5 sm:grid-cols-2">
