@@ -14,7 +14,7 @@ export default function ResumePage() {
           <p className="mt-3 max-w-lg text-sm leading-7 text-[#5b6478]">
             Click below to open or download the PDF version of my resume.
           </p>
-          
+          <a
             href={site.resume}
             target="_blank"
             rel="noreferrer"
