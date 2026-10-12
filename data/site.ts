@@ -2,7 +2,7 @@ export const site = {
   name: "Varun Nair",
 
   title:
-    "DevOps • Cloud • DevSecOps • MLOps • AIOps",
+    "DevOps • Cloud • Quant Engineering • DevSecOps • AI/ML",
 
   email: "coderv13@gmail.com",
 
@@ -31,6 +31,7 @@ export const site = {
   roles: [
     "DevOps",
     "Platform Engineering",
+    "Quantitative Engineering",
     "SRE",
     "DevSecOps",
     "Cloud Architecture",

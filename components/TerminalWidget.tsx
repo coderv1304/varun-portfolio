@@ -48,12 +48,12 @@ export default function TerminalWidget() {
 
       case "whoami":
         response =
-          "Varun Nair — MCA @ VESIT Mumbai — DevOps / Platform / Cloud / AI";
+          "Varun Nair — MCA @ VESIT Mumbai — DevOps / Cloud / Quant Engineering";
         break;
 
       case "skills":
         response =
-          "AWS · Terraform · Docker · Kubernetes · Linux · CI/CD · DevSecOps · Python · Go · LangGraph · Bedrock";
+          "QuantLib · Rates/Yield Curves · PCA · AWS · Terraform · Docker · Kubernetes · Linux · CI/CD · DevSecOps · Python";
         break;
 
       default:

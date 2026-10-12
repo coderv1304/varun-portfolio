@@ -72,4 +72,26 @@ export const projects: Project[] = [
     github: "https://github.com/coderv1304/MY-LEARNINGS",
     featured: true,
   },
+  {
+    slug: "rates-strategy-lab",
+    title: "Rates Strategy Lab",
+    category: "QUANT / FIXED INCOME RESEARCH",
+    description:
+      "Python quantitative research platform for US rates: Treasury curve construction (Nelson-Siegel-Svensson & QuantLib), PCA factor modeling, bond analytics (DV01, convexity), and walk-forward backtesting of 2s10s steepeners.",
+    longDescription:
+      "Rates Strategy Lab is an institutional-style quantitative research platform for US interest rates and yield curve relative value strategies. Features automated Treasury yield curve fitting using the Nelson-Siegel-Svensson parametric model and QuantLib zero-coupon bootstrapping, PCA decomposition (level, slope, curvature), bond analytics (DV01, modified duration, convexity), SOFR swap scenario engines, and walk-forward backtesting of a DV01-neutral 2s10s curve steepener with Deflated Sharpe ratio evaluation and an Excel/VBA risk dashboard.",
+    tech: [
+      "Python",
+      "QuantLib",
+      "NumPy",
+      "pandas",
+      "statsmodels",
+      "PCA",
+      "Yield Curves",
+      "Fixed Income Analytics",
+      "Excel / VBA",
+    ],
+    github: "https://github.com/coderv1304/rates-strategy-lab",
+    featured: true,
+  },
 ];

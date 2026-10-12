@@ -44,6 +44,15 @@ const projects = [
     tags: ["DevOps", "Cloud", "Linux", "DevSecOps", "AI & MLOps"],
     href: "https://github.com/coderv1304/MY-LEARNINGS",
   },
+  {
+    id: "06",
+    status: "SHIPPED",
+    title: "Rates Strategy Lab",
+    description:
+      "Python quantitative research platform for US rates: Treasury curve fitting (Nelson-Siegel-Svensson & QuantLib), PCA factor decomposition, bond analytics (DV01, convexity), and walk-forward backtesting of 2s10s steepeners.",
+    tags: ["Python", "QuantLib", "Fixed Income", "Yield Curve", "Backtesting"],
+    href: "https://github.com/coderv1304/rates-strategy-lab",
+  },
 ];
 
 export default function Projects() {
@@ -56,10 +65,9 @@ export default function Projects() {
         GitHub Projects
       </h2>
       <p className="mt-3 max-w-2xl text-muted">
-        5 public repositories — each designed, hardened, and documented
-        like it&apos;s going into a real environment. From Linux security
-        automation to ML-driven threat detection and multi-cloud incident
-        management.
+        6 public repositories — each designed, hardened, and documented
+        like it&apos;s going into a real environment. From quantitative rates
+        research and Linux security to ML threat detection and cloud automation.
       </p>
 
       <div className="mt-10 grid gap-5 sm:grid-cols-2">

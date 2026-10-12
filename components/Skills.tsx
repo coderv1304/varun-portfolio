@@ -1,27 +1,27 @@
 const stack = [
   {
-    group: "Languages & Frameworks",
-    items: ["Python", "Go", "Bash", "SQL", "Django", "Flask", "TypeScript"],
+    group: "Quant Finance & Rates",
+    items: ["QuantLib", "Nelson-Siegel-Svensson", "DV01 & Convexity", "2s10s Steepeners", "SOFR Swaps"],
   },
   {
-    group: "Containers & Orchestration",
-    items: ["Docker", "Docker Compose", "Multi-stage Builds", "Kubernetes"],
+    group: "Math & Statistical Modeling",
+    items: ["PCA Factor Analysis", "Time Series Econometrics", "Cointegration & Stationarity", "Deflated Sharpe"],
   },
   {
     group: "AWS Cloud & IaC",
     items: ["EC2, S3, IAM", "Lambda, EventBridge", "DynamoDB, CloudWatch", "Terraform (IaC)"],
   },
   {
+    group: "Containers & Orchestration",
+    items: ["Docker", "Docker Compose", "Multi-stage Builds", "Kubernetes"],
+  },
+  {
     group: "CI/CD & DevSecOps",
     items: ["GitHub Actions", "Bandit SAST", "ShellCheck & Hadolint", "Syft (SBOM) & Cosign"],
   },
   {
-    group: "Systems & Networking",
-    items: ["Linux Administration", "systemd Services & Timers", "TCP/IP, DNS, SSH", "AES-256 Encryption"],
-  },
-  {
-    group: "AI / LLM & MLOps",
-    items: ["Amazon Bedrock", "LangGraph Agents & RAG", "MCP (Model Context Protocol)", "scikit-learn & MLOps"],
+    group: "AI / LLM & Systems",
+    items: ["Amazon Bedrock", "LangGraph Agents & RAG", "Linux & systemd", "Python & Go"],
   },
 ];
 

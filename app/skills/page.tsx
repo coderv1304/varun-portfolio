@@ -12,9 +12,9 @@ export default function SkillsPage() {
       </h1>
 
       <p className="subheading">
-        A comprehensive technology stack spanning AWS cloud infrastructure,
-        Linux systems engineering, container orchestration, DevSecOps supply chain hardening,
-        and agentic AI / MLOps workflows.
+        A comprehensive engineering stack spanning quantitative finance & fixed income modeling,
+        mathematics & statistical econometrics, AWS cloud infrastructure, Linux systems engineering,
+        DevSecOps pipelines, and agentic AI / MLOps workflows.
       </p>
 
       <div className="skills-grid">

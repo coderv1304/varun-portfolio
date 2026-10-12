@@ -45,6 +45,10 @@ A project centered around detecting unusual network behaviour and supporting obs
 
 Comprehensive engineering knowledge base and practical repository cataloging notes, architectures, and implementations across DevOps, AWS Cloud, Linux systems, DevSecOps, and AI engineering.
 
+### [Rates Strategy Lab](https://github.com/coderv1304/rates-strategy-lab)
+
+Python quantitative research platform for US interest rates: Treasury curve construction (Nelson-Siegel-Svensson & QuantLib), PCA factor modeling, bond analytics (DV01, convexity), SOFR swap scenario engines, and walk-forward backtesting of DV01-neutral 2s10s curve steepeners.
+
 ## Current Focus
 
 - DevOps and cloud engineering workflows
