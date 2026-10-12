@@ -1,65 +1,4 @@
-const skillGroups = [
-  {
-    title: "DEVOPS",
-    skills: [
-      "Git",
-      "GitHub",
-      "CI/CD",
-      "Docker",
-      "Linux",
-      "Automation",
-    ],
-  },
-  {
-    title: "CLOUD",
-    skills: [
-      "Cloud Computing",
-      "Infrastructure",
-      "Deployment",
-      "Networking",
-      "Monitoring",
-    ],
-  },
-  {
-    title: "DEVSECOPS",
-    skills: [
-      "Security",
-      "SAST",
-      "Secure CI/CD",
-      "Vulnerability Management",
-    ],
-  },
-  {
-    title: "MLOPS / AIOPS",
-    skills: [
-      "Python",
-      "Machine Learning Operations",
-      "Automation",
-      "Monitoring",
-      "Intelligent Operations",
-    ],
-  },
-  {
-    title: "PROGRAMMING",
-    skills: [
-      "Python",
-      "Java",
-      "JavaScript",
-      "TypeScript",
-      "SQL",
-    ],
-  },
-  {
-    title: "FUNDAMENTALS",
-    skills: [
-      "Linux",
-      "Networking",
-      "Operating Systems",
-      "Databases",
-      "Computer Networks",
-    ],
-  },
-];
+import { skillGroups } from "@/data/skills";
 
 export default function SkillsPage() {
   return (
@@ -73,15 +12,20 @@ export default function SkillsPage() {
       </h1>
 
       <p className="subheading">
-        A continuously expanding technology stack focused
-        on infrastructure, automation, security and
-        intelligent systems.
+        A comprehensive technology stack spanning AWS cloud infrastructure,
+        Linux systems engineering, container orchestration, DevSecOps supply chain hardening,
+        and agentic AI / MLOps workflows.
       </p>
 
       <div className="skills-grid">
         {skillGroups.map((group) => (
           <section className="skill-panel" key={group.title}>
             <h3>{group.title}</h3>
+            {group.description && (
+              <p style={{ margin: "8px 0 0", fontSize: "13px", color: "var(--muted)", lineHeight: 1.5 }}>
+                {group.description}
+              </p>
+            )}
 
             <div className="skill-items">
               {group.skills.map((skill) => (

@@ -1,12 +1,28 @@
 const fs = require('fs');
 const path = require('path');
 
-const src = path.join(__dirname, 'public', 'Varun_Nair_Resume (1).pdf');
-const dest = path.join(__dirname, 'public', 'resume.pdf');
+const publicDir = path.join(__dirname, 'public');
+const dest = path.join(publicDir, 'resume.pdf');
 
-if (fs.existsSync(src)) {
-  fs.copyFileSync(src, dest);
-  console.log('Successfully copied resume to public/resume.pdf');
-} else {
-  console.log('Source file not found:', src);
+// Check candidates
+const candidates = [
+  'Varun_Nair_CV (3).pdf',
+  'Varun_Nair_CV.pdf',
+  'Varun_Nair_Resume (1).pdf',
+  'Varun_Nair_Resume.pdf'
+];
+
+let found = false;
+for (const file of candidates) {
+  const src = path.join(publicDir, file);
+  if (fs.existsSync(src)) {
+    fs.copyFileSync(src, dest);
+    console.log(`Successfully copied ${file} to public/resume.pdf`);
+    found = true;
+    break;
+  }
+}
+
+if (!found) {
+  console.log('No matching resume source file found in public/');
 }

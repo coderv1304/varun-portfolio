@@ -117,7 +117,7 @@ export default function Home() {
 
           <div className="info-grid">
             <div className="info-card">
-              <div className="info-value">8.5</div>
+              <div className="info-value">{site.education.cgpa}</div>
               <div className="info-label">
                 Aggregate CGPA · Semester 2
               </div>

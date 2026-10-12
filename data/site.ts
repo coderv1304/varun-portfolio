@@ -14,7 +14,7 @@ export const site = {
   hashnode:
     "https://varun-nair-13.hashnode.dev/",
 
-  resume: "/Varun_Nair_Resume (1).pdf",
+  resume: "/Varun_Nair_CV (3).pdf",
 
   education: {
     bachelors: "B.Sc Information Technology",
@@ -25,14 +25,15 @@ export const site = {
 
     duration: "2025–2027",
 
-    cgpa: "8.5",
+    cgpa: "8.49",
   },
 
   roles: [
     "DevOps",
+    "Platform Engineering",
+    "SRE",
     "DevSecOps",
-    "Cloud",
-    "MLOps",
-    "AIOps",
+    "Cloud Architecture",
+    "AI / MLOps",
   ],
 };

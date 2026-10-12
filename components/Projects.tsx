@@ -37,12 +37,12 @@ const projects = [
   },
   {
     id: "05",
-    status: "SHIPPED",
-    title: "Data Structures & Algorithms",
+    status: "ACTIVE",
+    title: "MY LEARNINGS",
     description:
-      "Core computer science repository covering algorithm design, data structures, space-time complexity analysis, graph algorithms, and problem solving in C++ and Python.",
-    tags: ["C++", "Python", "Algorithms", "Data Structures"],
-    href: "https://github.com/coderv1304/DSA",
+      "Comprehensive knowledge repository and practical guides covering DevOps pipelines, AWS infrastructure, Linux administration, DevSecOps security best practices, and AI/ML workflows.",
+    tags: ["DevOps", "Cloud", "Linux", "DevSecOps", "AI & MLOps"],
+    href: "https://github.com/coderv1304/MY-LEARNINGS",
   },
 ];
 

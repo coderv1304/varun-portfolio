@@ -41,9 +41,9 @@ A Linux administration project focused on Bash automation and systemd services f
 
 A project centered around detecting unusual network behaviour and supporting observability in distributed systems.
 
-### [DSA](https://github.com/coderv1304/DSA)
+### [MY LEARNINGS](https://github.com/coderv1304/MY-LEARNINGS)
 
-Repository for data structures and algorithm practice, covering core problem solving and programming fundamentals.
+Comprehensive engineering knowledge base and practical repository cataloging notes, architectures, and implementations across DevOps, AWS Cloud, Linux systems, DevSecOps, and AI engineering.
 
 ## Current Focus
 

@@ -1,27 +1,27 @@
 const stack = [
   {
-    group: "Languages",
-    items: ["Python", "Go", "Bash", "SQL"],
+    group: "Languages & Frameworks",
+    items: ["Python", "Go", "Bash", "SQL", "Django", "Flask", "TypeScript"],
   },
   {
     group: "Containers & Orchestration",
-    items: ["Docker", "Docker Compose", "Kubernetes (learning)"],
+    items: ["Docker", "Docker Compose", "Multi-stage Builds", "Kubernetes"],
   },
   {
-    group: "Cloud",
-    items: ["AWS EC2", "AWS S3", "AWS IAM"],
+    group: "AWS Cloud & IaC",
+    items: ["EC2, S3, IAM", "Lambda, EventBridge", "DynamoDB, CloudWatch", "Terraform (IaC)"],
   },
   {
-    group: "CI/CD & Supply Chain",
-    items: ["GitHub Actions", "hadolint", "shellcheck", "syft (SBOM)", "cosign"],
+    group: "CI/CD & DevSecOps",
+    items: ["GitHub Actions", "Bandit SAST", "ShellCheck & Hadolint", "Syft (SBOM) & Cosign"],
   },
   {
-    group: "Systems",
-    items: ["Linux", "systemd", "Ubuntu (VMware)"],
+    group: "Systems & Networking",
+    items: ["Linux Administration", "systemd Services & Timers", "TCP/IP, DNS, SSH", "AES-256 Encryption"],
   },
   {
-    group: "Data & ML",
-    items: ["scikit-learn", "PostgreSQL", "Random Forest / anomaly detection"],
+    group: "AI / LLM & MLOps",
+    items: ["Amazon Bedrock", "LangGraph Agents & RAG", "MCP (Model Context Protocol)", "scikit-learn & MLOps"],
   },
 ];
 

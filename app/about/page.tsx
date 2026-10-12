@@ -52,7 +52,7 @@ export default function AboutPage() {
             <div className="eyebrow">CGPA</div>
 
             <h2 style={{ marginTop: 15 }}>
-              8.5
+              {site.education.cgpa}
             </h2>
 
             <p className="info-label">

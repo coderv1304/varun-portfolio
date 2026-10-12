@@ -61,15 +61,15 @@ export const projects: Project[] = [
     featured: true,
   },
   {
-    slug: "dsa",
-    title: "Data Structures & Algorithms",
-    category: "CORE / ALGORITHMS",
+    slug: "my-learnings",
+    title: "MY LEARNINGS",
+    category: "SYSTEMS / KNOWLEDGE REPO",
     description:
-      "Repository for data structures and algorithm practice, covering problem solving, graph algorithms, and system performance optimization.",
+      "Comprehensive knowledge repository and practical code documenting deep dives into DevOps, AWS Cloud, DevSecOps, Linux systems, and AI engineering.",
     longDescription:
-      "Core computer science repository covering algorithm design, data structures, space-time complexity analysis, graph algorithms, dynamic programming, and competitive programming solutions implemented with high efficiency.",
-    tech: ["C++", "Python", "Algorithms", "Data Structures"],
-    github: "https://github.com/coderv1304/DSA",
-    featured: false,
+      "A dedicated, continuous learning repository cataloging technical notes, architectural diagrams, proof-of-concepts, and hands-on implementations across Linux systems administration, AWS cloud engineering, container orchestration, CI/CD security pipelines, and LLM/agentic workflows.",
+    tech: ["DevOps", "AWS Cloud", "Linux", "DevSecOps", "Docker", "AI / MLOps"],
+    github: "https://github.com/coderv1304/MY-LEARNINGS",
+    featured: true,
   },
 ];
