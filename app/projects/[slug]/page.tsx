@@ -30,6 +30,24 @@ export default function ProjectPage({
         {project.longDescription}
       </p>
 
+      {project.highlights && (
+        <section className="project-detail-section">
+          <div className="eyebrow">WHAT IT DOES</div>
+          <ul className="project-highlights">
+            {project.highlights.map((highlight) => (
+              <li key={highlight}>{highlight}</li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {project.scopeNote && (
+        <aside className="project-scope-note">
+          <strong>Scope & evaluation</strong>
+          <p>{project.scopeNote}</p>
+        </aside>
+      )}
+
       <div className="skill-panel" style={{ marginTop: 50 }}>
         <h3>TECHNOLOGIES</h3>
 
@@ -51,6 +69,17 @@ export default function ProjectPage({
             className="button button-primary"
           >
             VIEW ON GITHUB →
+          </a>
+        )}
+
+        {project.demo && (
+          <a
+            href={project.demo}
+            target="_blank"
+            rel="noreferrer"
+            className="button button-secondary"
+          >
+            LIVE DEMO ↗
           </a>
         )}
 

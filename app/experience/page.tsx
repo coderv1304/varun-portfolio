@@ -1,4 +1,5 @@
 import { PageShell } from "@/components/PageShell";
+import { site } from "@/data/site";
 
 export default function ExperiencePage() {
   return (
@@ -13,7 +14,7 @@ export default function ExperiencePage() {
               <p className="font-mono text-xs text-[#7c93f0]">2025 — 2027</p>
               <h2 className="mt-3 text-2xl font-bold text-[#2d3250]">Master of Computer Applications</h2>
               <p className="mt-2 text-[#5b6478]">VESIT, Mumbai</p>
-              <p className="mt-3 text-sm text-[#6b7690]">8.5 aggregate CGPA as of Semester 2</p>
+              <p className="mt-3 text-sm text-[#6b7690]">{site.education.cgpa} aggregate CGPA as of Semester 2</p>
             </div>
             <span className="font-mono text-xs text-[#6b7690]">CURRENT</span>
           </div>

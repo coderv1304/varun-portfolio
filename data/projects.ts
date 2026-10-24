@@ -8,6 +8,8 @@ export type Project = {
   github: string;
   demo?: string;
   featured?: boolean;
+  highlights?: string[];
+  scopeNote?: string;
 };
 
 export const projects: Project[] = [
@@ -25,15 +27,32 @@ export const projects: Project[] = [
   },
   {
     slug: "network-anomaly-detection",
-    title: "Network Anomaly Detection",
-    category: "MLOPS / SECURITY",
+    title: "NetShield — Network Anomaly Detection",
+    category: "MACHINE LEARNING / NETWORK SECURITY",
     description:
-      "ML-based intrusion detection engine using Random Forest trained on CIC-IDS-2017 with sub-millisecond inference and Docker CI/CD pipelines.",
+      "An end-to-end network-flow analysis project combining a Flask dashboard, Random Forest classification, PCAP/CSV analysis, and live-flow monitoring.",
     longDescription:
-      "A project centered around detecting unusual network behavior and supporting observability in distributed systems. Features ML-based intrusion detection using Random Forest trained on CIC-IDS-2017 with sub-millisecond inference, containerized with Docker, and protected by a GitHub Actions pipeline with automated security scanning (Bandit, pip-audit).",
-    tech: ["Python", "scikit-learn", "Docker", "Security", "CI/CD"],
+      "NetShield explores the practical challenges of network anomaly detection using CIC-IDS-2017. Its primary runnable experience is a Flask application for analyzing flow CSVs and PCAP/PCAPNG captures, classifying flows with a scikit-learn Random Forest, and monitoring incoming events through a Flask-SocketIO dashboard. The repository also includes SQLite-backed flow history, feature-name normalization, optional AbuseIPDB enrichment, model evaluation utilities, and a separate experimental Go capture prototype.",
+    tech: [
+      "Python",
+      "Flask",
+      "scikit-learn",
+      "Flask-SocketIO",
+      "SQLite",
+      "PyFlowMeter",
+      "Go",
+      "pytest",
+    ],
     github: "https://github.com/coderv1304/network-anomaly-detection",
     featured: true,
+    highlights: [
+      "Analyze CSV, PCAP, and PCAPNG traffic through the web interface.",
+      "Inspect live-flow events, capture status, and persisted flow statistics.",
+      "Evaluate training pipelines with dataset audits, baselines, and offline SHAP analysis.",
+      "Normalize capture-tool feature names and report unmapped fields for diagnosis.",
+    ],
+    scopeNote:
+      "The project is for education and controlled lab use, not production intrusion prevention. Its documented Random Forest baseline macro-F1 is 0.1072 ± 0.0030; random row splits can overstate performance on unseen networks. The Go capture tool is an experimental standalone prototype, and dashboard response controls are simulations.",
   },
   {
     slug: "incident-command-center",
@@ -63,12 +82,12 @@ export const projects: Project[] = [
   {
     slug: "my-learnings",
     title: "MY LEARNINGS",
-    category: "SYSTEMS / KNOWLEDGE REPO",
+    category: "ENGINEERING / DSA / KNOWLEDGE REPO",
     description:
-      "Comprehensive knowledge repository and practical code documenting deep dives into DevOps, AWS Cloud, DevSecOps, Linux systems, and AI engineering.",
+      "Growing engineering knowledge repository covering DevOps, AWS Cloud, DevSecOps, Linux, AI engineering, and my ongoing Data Structures & Algorithms learning in C++.",
     longDescription:
-      "A dedicated, continuous learning repository cataloging technical notes, architectural diagrams, proof-of-concepts, and hands-on implementations across Linux systems administration, AWS cloud engineering, container orchestration, CI/CD security pipelines, and LLM/agentic workflows.",
-    tech: ["DevOps", "AWS Cloud", "Linux", "DevSecOps", "Docker", "AI / MLOps"],
+      "A dedicated, continuous learning repository cataloging technical notes, architectural diagrams, proof-of-concepts, and hands-on implementations across Linux systems administration, AWS cloud engineering, container orchestration, CI/CD security pipelines, LLM/agentic workflows, and Data Structures & Algorithms in C++.",
+    tech: ["C++", "DSA", "DevOps", "AWS Cloud", "Linux", "DevSecOps", "Docker", "AI / MLOps"],
     github: "https://github.com/coderv1304/MY-LEARNINGS",
     featured: true,
   },

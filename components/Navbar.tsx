@@ -13,7 +13,7 @@ export default function Navbar() {
     <header className="navbar">
       <div className="navbar-inner">
         <Link href="/" className="logo" onClick={closeMenu}>
-          VARUN<span>.DEV</span>
+          VARUN NAIR
         </Link>
 
         <nav className="nav-links">
@@ -35,38 +35,40 @@ export default function Navbar() {
         <button
           className="mobile-menu"
           onClick={() => setOpen(!open)}
-          aria-label="Toggle navigation"
+          aria-label={open ? "Close navigation" : "Open navigation"}
+          aria-expanded={open}
+          aria-controls="mobile-navigation"
         >
-          MENU
+          {open ? "CLOSE" : "MENU"}
         </button>
       </div>
 
-      {open && (
-        <nav
-          style={{
-            display: "grid",
-            gap: "18px",
-            padding: "20px 24px",
-            borderTop: "1px solid var(--border)",
-          }}
-        >
-          <Link href="/about" onClick={closeMenu}>
-            ABOUT
-          </Link>
+      <nav
+        id="mobile-navigation"
+        className="mobile-nav"
+        aria-label="Mobile navigation"
+        hidden={!open}
+      >
+        <Link href="/about" onClick={closeMenu}>
+          ABOUT
+        </Link>
 
-          <Link href="/projects" onClick={closeMenu}>
-            PROJECTS
-          </Link>
+        <Link href="/projects" onClick={closeMenu}>
+          PROJECTS
+        </Link>
 
-          <Link href="/skills" onClick={closeMenu}>
-            SKILLS
-          </Link>
+        <Link href="/skills" onClick={closeMenu}>
+          SKILLS
+        </Link>
 
-          <Link href="/contact" onClick={closeMenu}>
-            CONTACT
-          </Link>
-        </nav>
-      )}
+        <Link href="/contact" onClick={closeMenu}>
+          CONTACT
+        </Link>
+
+        <a href={site.resume} target="_blank" rel="noreferrer" onClick={closeMenu}>
+          RESUME ↗
+        </a>
+      </nav>
     </header>
   );
 }

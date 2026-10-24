@@ -1,9 +1,11 @@
+import { site } from "@/data/site";
+
 export default function StatusWidget() {
   const status = [
-    ["AVAILABILITY", "OPEN"],
+    ["OPPORTUNITY", "OPEN TO INTERNSHIPS"],
     ["EDUCATION", "MCA @ VESIT"],
-    ["CGPA", "8.5"],
-    ["FOCUS", "DEVOPS / CLOUD"],
+    ["CURRENT CGPA", site.education.cgpa],
+    ["ENGINEERING", "SECURITY / INFRA"],
   ];
 
   return (
@@ -11,12 +13,12 @@ export default function StatusWidget() {
       <div className="status-body">
         <div className="status-top">
           <span className="status-label">
-            SYSTEM STATUS
+            ENGINEER PROFILE
           </span>
 
           <span className="online">
             <span className="pulse" />
-            ONLINE
+            AVAILABLE
           </span>
         </div>
 

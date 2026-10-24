@@ -115,8 +115,9 @@ export const skillGroups = [
   },
   {
     title: "LANGUAGES & DATABASES",
-    description: "Systems programming, quantitative research, automation scripting, and database design.",
+    description: "Systems programming, problem-solving, quantitative research, automation scripting, and database design.",
     skills: [
+      "Data Structures & Algorithms (C++)",
       "Python (NumPy, SciPy, pandas, statsmodels)",
       "QuantLib",
       "Go (Golang)",

@@ -6,9 +6,9 @@ import Footer from "@/components/Footer";
 import GridBackground from "@/components/GridBackground";
 
 export const metadata: Metadata = {
-  title: "Varun Nair | DevOps • Cloud • DevSecOps",
+  title: "Varun Nair | Infrastructure, Security & Cloud",
   description:
-    "Portfolio of Varun Nair — DevOps, Cloud, DevSecOps, MLOps and AIOps.",
+    "Varun Nair's portfolio: infrastructure, cloud, automation, and security engineering—with a little music on the side.",
 };
 
 export default function RootLayout({
@@ -22,7 +22,7 @@ export default function RootLayout({
         <GridBackground />
         <Navbar />
 
-        <main>{children}</main>
+        {children}
 
         <Footer />
       </body>

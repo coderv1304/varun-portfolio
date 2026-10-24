@@ -11,10 +11,10 @@ const projects = [
   {
     id: "02",
     status: "SHIPPED",
-    title: "Network Anomaly Detection",
+    title: "NetShield — Network Anomaly Detection",
     description:
-      "ML-based intrusion detection engine using Random Forest trained on CIC-IDS-2017 with sub-millisecond inference. Shipped with Docker packaging and GitHub Actions security pipelines (Bandit, pip-audit).",
-    tags: ["Python", "scikit-learn", "Docker", "Security", "CI/CD"],
+      "Network-flow analysis project combining a Flask dashboard, Random Forest classification, CSV/PCAP analysis, and live-flow monitoring. Includes model evaluation tools and an experimental Go capture prototype.",
+    tags: ["Python", "Flask", "scikit-learn", "SQLite", "Go"],
     href: "https://github.com/coderv1304/network-anomaly-detection",
   },
   {
@@ -40,8 +40,8 @@ const projects = [
     status: "ACTIVE",
     title: "MY LEARNINGS",
     description:
-      "Comprehensive knowledge repository and practical guides covering DevOps pipelines, AWS infrastructure, Linux administration, DevSecOps security best practices, and AI/ML workflows.",
-    tags: ["DevOps", "Cloud", "Linux", "DevSecOps", "AI & MLOps"],
+      "Growing engineering knowledge repository covering DevOps, AWS, Linux, DevSecOps, AI/ML, and my ongoing Data Structures & Algorithms learning in C++.",
+    tags: ["C++", "DSA", "DevOps", "Cloud", "Linux", "AI & MLOps"],
     href: "https://github.com/coderv1304/MY-LEARNINGS",
   },
   {

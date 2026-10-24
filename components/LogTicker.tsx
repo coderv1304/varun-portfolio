@@ -2,7 +2,7 @@ const entries = [
   "backup.service: restore verification PASSED — checksum match confirmed",
   "monitor.service: anomaly detector baseline updated (rolling window: 24h)",
   "ci/cd: sbom generated via syft, image signed via cosign",
-  "network-anomaly-detection: inference latency < 1ms (Random Forest, CIC-IDS-2017)",
+  "network-anomaly-detection: CSV + PCAP analysis and live-flow monitoring",
   "docker-compose: multi-arch build passed on amd64 + arm64",
   "auth: migrated repo remote from HTTPS/PAT to SSH (ed25519)",
   "linux-administration: shellcheck clean across 5 scripts",
