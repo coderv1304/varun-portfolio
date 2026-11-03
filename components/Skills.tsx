@@ -13,7 +13,15 @@ const stack = [
   },
   {
     group: "Containers & Orchestration",
-    items: ["Docker", "Docker Compose", "Multi-stage Builds", "Kubernetes"],
+    items: [
+      "Docker & Docker Compose",
+      "Kubernetes Deployments & Services",
+      "Kubernetes RBAC & ServiceAccounts",
+      "Kubernetes NetworkPolicies",
+      "ConfigMaps, Secrets & Persistent Volumes",
+      "Probes, Resource Limits & Rollouts",
+      "Kustomize & kind",
+    ],
   },
   {
     group: "CI/CD & DevSecOps",
@@ -21,7 +29,14 @@ const stack = [
   },
   {
     group: "AI / LLM & Systems",
-    items: ["Amazon Bedrock", "LangGraph Agents & RAG", "Linux & systemd", "Python & Go"],
+    items: [
+      "Amazon Bedrock & Ollama",
+      "LangGraph Agents & RAG",
+      "Human-in-the-Loop AI Workflows",
+      "Prometheus & Loki Observability",
+      "Linux & systemd",
+      "Python & Go",
+    ],
   },
 ];
 

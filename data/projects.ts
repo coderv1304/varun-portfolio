@@ -9,10 +9,50 @@ export type Project = {
   demo?: string;
   featured?: boolean;
   highlights?: string[];
+  skillsLearned?: string[];
   scopeNote?: string;
 };
 
 export const projects: Project[] = [
+  {
+    slug: "prometheus-ai",
+    title: "PrometheusAI",
+    category: "AI / KUBERNETES INCIDENT RESPONSE",
+    description:
+      "Approval-gated incident response for Kubernetes: an AI agent investigates alerts, proposes bounded remediations, and requires human approval before execution.",
+    longDescription:
+      "PrometheusAI is a Kubernetes incident-response demo that investigates alerts with observability data and read-only cluster tools, proposes an allowlisted remediation, and validates it with a server-side dry run. A separate policy service checks the exact action and human approval before executing it, then records the decision and verifies the outcome. It supports deterministic fake-model, Ollama, and Bedrock backends.",
+    tech: [
+      "Python",
+      "LangGraph",
+      "FastAPI",
+      "Kubernetes",
+      "Prometheus",
+      "Loki",
+      "PostgreSQL",
+      "pgvector",
+      "pytest",
+    ],
+    github: "https://github.com/coderv1304/PrometheusAI",
+    featured: true,
+    highlights: [
+      "Investigate alerts using Prometheus, Loki, runbooks, and read-only Kubernetes tools.",
+      "Limit remediations to allowlisted restart, undo, and scale operations.",
+      "Require a successful server-side dry run and human approval bound to the action hash.",
+      "Separate agent read access from the policy service's Kubernetes write identity.",
+      "Record decisions and verify execution outcomes with deterministic evaluation and tests.",
+    ],
+    skillsLearned: [
+      "Designing stateful AI agent workflows with LangGraph and pluggable model backends.",
+      "Separating LLM-generated proposals from deterministic authorization and execution.",
+      "Applying least-privilege Kubernetes RBAC and isolating services with NetworkPolicies.",
+      "Building Python APIs and CLI workflows for incident investigation and approvals.",
+      "Collecting observability evidence from Prometheus, Loki, and Kubernetes.",
+      "Testing safety boundaries with pytest, policy tests, and deterministic scenario evaluations.",
+    ],
+    scopeNote:
+      "This is a working demo for injected faults in a local kind cluster. It has not been validated on real production incidents and is not a production-ready autonomous operator.",
+  },
   {
     slug: "cipher-watch",
     title: "Cipher-Watch",

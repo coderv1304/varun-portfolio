@@ -41,6 +41,17 @@ export default function ProjectPage({
         </section>
       )}
 
+      {project.skillsLearned && (
+        <section className="project-detail-section">
+          <div className="eyebrow">SKILLS LEARNED</div>
+          <ul className="project-highlights">
+            {project.skillsLearned.map((skill) => (
+              <li key={skill}>{skill}</li>
+            ))}
+          </ul>
+        </section>
+      )}
+
       {project.scopeNote && (
         <aside className="project-scope-note">
           <strong>Scope & evaluation</strong>
