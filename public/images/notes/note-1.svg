@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900">
+  <defs>
+    <linearGradient id="nbg-1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#14110e"/>
+      <stop offset="100%" stop-color="#080706"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#nbg-1)"/>
+  <rect x="30" y="30" width="1540" height="840" fill="none" stroke="#514332" stroke-opacity="0.5" stroke-width="1"/>
+  
+  <g opacity="0.25" stroke="#ff8c59" stroke-width="1" fill="none">
+    <line x1="800" y1="100" x2="800" y2="800"/>
+    <line x1="100" y1="450" x2="1500" y2="450"/>
+    <circle cx="800" cy="450" r="240" stroke-dasharray="6 8"/>
+  </g>
+  
+  <rect x="80" y="80" width="140" height="34" fill="#030303" stroke="#8e7963" stroke-width="1" rx="4"/>
+  <text x="150" y="102" font-family="monospace" font-size="12" fill="#ff8c59" text-anchor="middle" letter-spacing="2">DEEP DIVE</text>
+
+  <text x="1520" y="102" font-family="monospace" font-size="14" fill="#aaa9a4" text-anchor="end" letter-spacing="2">NOTE // 01</text>
+  
+  <text x="800" y="440" font-family="'DM Sans', sans-serif" font-size="48" font-weight="500" fill="#f1eee8" text-anchor="middle" letter-spacing="-1">Why approval gates matter in AIOps</text>
+  <text x="800" y="500" font-family="monospace" font-size="16" fill="#aaa9a4" text-anchor="middle" letter-spacing="3">AUTONOMOUS REMEDIATION BOUNDARIES & SAFETY</text>
+
+  <text x="80" y="820" font-family="monospace" font-size="13" fill="#aaa9a4" letter-spacing="1">FIELD NOTE · 1600×900</text>
+  <text x="1520" y="820" font-family="monospace" font-size="13" fill="#ff8c59" text-anchor="end" letter-spacing="2">VARUN-NAIR-13.HASHNODE.DEV</text>
+</svg>

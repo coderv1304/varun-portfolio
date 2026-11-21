@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000">
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ff8c59" stop-opacity="0.18"/>
+      <stop offset="60%" stop-color="#ff8c59" stop-opacity="0.04"/>
+      <stop offset="100%" stop-color="#030303" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1000" height="1000" fill="#030303"/>
+  <circle cx="500" cy="500" r="420" fill="url(#glow)"/>
+  <g transform="translate(500,500) rotate(-30)" stroke="#ababab" fill="none" opacity="0.65">
+    <ellipse cx="0" cy="0" rx="380" ry="140" stroke-width="2"/>
+    <ellipse cx="0" cy="0" rx="360" ry="120" stroke-width="1" stroke-dasharray="4 6"/>
+    <ellipse cx="0" cy="0" rx="280" ry="280" stroke-width="1.5" stroke="#8e7963"/>
+    <ellipse cx="0" cy="0" rx="140" ry="380" stroke-width="2"/>
+    <ellipse cx="0" cy="0" rx="120" ry="360" stroke-width="1" stroke-dasharray="4 6"/>
+  </g>
+  <circle cx="500" cy="500" r="8" fill="#ff8c59"/>
+</svg>

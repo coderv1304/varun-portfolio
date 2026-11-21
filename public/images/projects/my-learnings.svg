@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 660" width="1440" height="660">
+  <defs>
+    <linearGradient id="bg-my-learnings" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a0a09"/>
+      <stop offset="50%" stop-color="#070707"/>
+      <stop offset="100%" stop-color="#030303"/>
+    </linearGradient>
+    <pattern id="grid-my-learnings" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#ccdcf5" stroke-width="0.5" stroke-opacity="0.08"/>
+    </pattern>
+  </defs>
+  <rect width="1440" height="660" fill="url(#bg-my-learnings)"/>
+  <rect width="1440" height="660" fill="url(#grid-my-learnings)"/>
+  <rect x="24" y="24" width="1392" height="612" fill="none" stroke="#ccdcf5" stroke-opacity="0.12" stroke-width="1"/>
+  
+  <!-- Architectural schematic details -->
+  <g opacity="0.4" stroke="#8e7963" stroke-width="1" fill="none">
+    <circle cx="720" cy="330" r="180" stroke-dasharray="4 6"/>
+    <circle cx="720" cy="330" r="90"/>
+    <line x1="480" y1="330" x2="960" y2="330"/>
+    <line x1="720" y1="120" x2="720" y2="540"/>
+  </g>
+  
+  <text x="80" y="100" font-family="monospace" font-size="14" fill="#aaa9a4" letter-spacing="2">01 / ARCHITECTURAL SCHEMATIC · 1440 × 660</text>
+  <text x="1360" y="100" font-family="monospace" font-size="14" fill="#ff8c59" letter-spacing="2" text-anchor="end">SYS.VERIFIED</text>
+  
+  <text x="720" y="300" font-family="'DM Sans', sans-serif" font-size="44" font-weight="600" fill="#f1eee8" text-anchor="middle" letter-spacing="-1">MY LEARNINGS</text>
+  <text x="720" y="350" font-family="monospace" font-size="16" fill="#aaa9a4" text-anchor="middle" letter-spacing="3">ENGINEERING KNOWLEDGE REPOSITORY & C++ DSA</text>
+  <text x="720" y="410" font-family="monospace" font-size="13" fill="#ff8c59" text-anchor="middle" letter-spacing="2">DEVOPS / CLOUD / DEVSECOPS / ARCHITECTURE</text>
+
+  <text x="80" y="580" font-family="monospace" font-size="12" fill="#aaa9a4" letter-spacing="1">ARCHITECTURAL SCHEMATIC · 1440×660</text>
+  <text x="1360" y="580" font-family="monospace" font-size="12" fill="#aaa9a4" letter-spacing="1" text-anchor="end">SHA-256 // VERIFIED BUILD</text>
+</svg>
