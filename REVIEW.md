@@ -35,6 +35,11 @@ passes.
 - **Notes**: draft cards (3 of 6) are now excluded from the home page and `/notes`; every visible
   card deep-links to its own post.
 - **Referral**: `?ref=<company>` now renders "Hi &lt;Company&gt; team — the NetShield case study…".
+- **Hero composition**: the wordmark was sized purely by viewport width, so on short-and-wide
+  screens it grew up into the portrait's face and letters crossed his chin. The H1 is now capped by
+  height (`min(17vw, 25svh)`), the cut-out is slightly smaller/dimmer with a deeper bottom fade and
+  a scrim, so the face always sits in clear space and the letters cross only the chest. Measured
+  chin → wordmark clearance (line box): 44 px at 1600×900, 72 px at 1366×768, 101 px at 390×844.
 - **Docs**: README rewritten; this file added.
 
 ## 1. Claim audit
