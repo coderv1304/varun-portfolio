@@ -9,6 +9,14 @@ export interface SiteConfig {
   location: string;
   email: string;
   availability: string;
+  availabilityWindow: string;
+  startYear: string;
+  url: string;
+  proof: {
+    value: string;
+    label: string;
+    source: string;
+  };
   socials: SocialLink[];
   bio: {
     kicker: string;
@@ -20,7 +28,6 @@ export interface SiteConfig {
   education: {
     degree: string;
     institution: string;
-    cgpa: string;
     period: string;
   };
 }
@@ -30,6 +37,17 @@ export interface StatItem {
   suffix?: string;
   label: string;
   sublabel?: string;
+}
+
+export interface ProjectEvidence {
+  problem: string;
+  approach: string;
+  result: {
+    value: string;
+    unit?: string;
+    label: string;
+    note?: string;
+  };
 }
 
 export interface ProjectItem {
@@ -45,6 +63,7 @@ export interface ProjectItem {
   caseStudy: string;
   image: string;
   featured?: boolean;
+  evidence: ProjectEvidence;
   details?: {
     overview: string;
     architecture?: string[];
@@ -74,9 +93,10 @@ export interface NoteItem {
   excerpt: string;
   type: "BUILD LOG" | "DEEP DIVE";
   cover: string;
-  href: string;
+  href?: string;
   source: string;
   date?: string;
+  draft?: boolean;
 }
 
 export interface TimelineItem {
@@ -87,10 +107,18 @@ export interface TimelineItem {
 
 export const site: SiteConfig = {
   name: "Varun Nair",
-  role: "Infrastructure, Security & Cloud Engineer",
+  role: "Platform Engineering · DevOps · SRE Intern",
   location: "Mumbai, India",
   email: "coderv1304@gmail.com",
-  availability: "OPEN TO INTERNSHIPS — DEVOPS / CLOUD / SECURITY",
+  availability: "Available for internships · Dec 2026 – Jun 2027",
+  availabilityWindow: "DEC 2026 – JUN 2027",
+  startYear: "2025",
+  url: "https://varun-portfolio-rouge.vercel.app",
+  proof: {
+    value: "38×",
+    label: "fewer alerts after 300 s host/window grouping",
+    source: "NetShield · CIC-IDS-2017",
+  },
   socials: [
     { label: "GitHub", url: "https://github.com/coderv1304" },
     { label: "LinkedIn", url: "https://www.linkedin.com/in/connectvarun13" },
@@ -98,7 +126,7 @@ export const site: SiteConfig = {
     { label: "Email", url: "mailto:coderv1304@gmail.com" },
   ],
   bio: {
-    kicker: "A SYSTEMS PERSPECTIVE ON INFRASTRUCTURE",
+    kicker: "PLATFORM, DEVOPS & SRE INTERN",
     description: "I build secure, observable infrastructure — and the automation that keeps it running.",
     aboutHeadline: "Infrastructure is the starting point. Reliability is the point.",
     aboutLead: "I connect engineering depth, operational discipline, and clear communication.",
@@ -107,26 +135,28 @@ export const site: SiteConfig = {
   education: {
     degree: "Master of Computer Applications",
     institution: "VESIT Mumbai",
-    cgpa: "8.49",
     period: "2025–2027",
   },
 };
 
 export const stats: StatItem[] = [
   {
-    value: "8.49",
-    suffix: "",
-    label: "aggregate CGPA · MCA @ VESIT",
+    value: "38",
+    suffix: "×",
+    label: "alert reduction after 300 s grouping",
+    sublabel: "NetShield",
   },
   {
-    value: "07",
-    suffix: "",
-    label: "engineering projects shipped end-to-end",
+    value: "13.5",
+    suffix: "M",
+    label: "flows scored in cross-dataset validation",
+    sublabel: "NetShield · CIC-IDS-2018",
   },
   {
     value: "11",
     suffix: "",
     label: "public repositories on GitHub",
+    sublabel: "verified Nov 2026",
   },
 ];
 
@@ -153,6 +183,17 @@ export const projects: ProjectItem[] = [
     caseStudy: "/work/prometheus-ai",
     image: "/images/projects/prometheus-ai.svg",
     featured: true,
+    evidence: {
+      problem:
+        "Kubernetes alerts arrive faster than an on-call engineer can triage them, and an autonomous fix is unsafe without a hard boundary.",
+      approach:
+        "Read-only investigation agent, allowlisted remediations, server-side dry run, and human approval bound to the action hash.",
+      result: {
+        value: "3",
+        label: "remediation verbs allowlisted",
+        note: "restart · undo · scale — everything else fails closed",
+      },
+    },
     details: {
       overview:
         "PrometheusAI investigates alerts using Prometheus, Loki, runbooks, and read-only Kubernetes tools. It proposes an allowlisted remediation, validates it with a server-side dry run, and requires human approval cryptographically bound to the action hash before execution.",
@@ -189,11 +230,23 @@ export const projects: ProjectItem[] = [
     caseStudy: "/work/netshield",
     image: "/images/projects/netshield.svg",
     featured: true,
+    evidence: {
+      problem:
+        "A strong benchmark score hides the fact that real-traffic prevalence collapses precision.",
+      approach:
+        "Random Forest on CIC-IDS-2017, prevalence analysis, and 300 s host/window alert grouping.",
+      result: {
+        value: "38",
+        unit: "×",
+        label: "fewer alerts after grouping",
+        note: "96.39% precision at 25.05% prevalence; 7.40% at 0.1%",
+      },
+    },
     details: {
       overview:
-        "NetShield is an end-to-end network flow anomaly detection engine trained on CIC-IDS-2017. Features real-time PCAP/PCAPNG ingestion, Random Forest inference, feature normalization, and an interactive Flask-SocketIO monitoring console.",
+        "NetShield is an end-to-end network flow anomaly detection engine trained on CIC-IDS-2017. It combines real-time PCAP/PCAPNG ingestion, Random Forest inference, feature normalization, and an interactive Flask-SocketIO monitoring console.",
       architecture: [
-        "High-throughput packet parsing pipeline with PyFlowMeter and experimental Go capture daemon",
+        "High-throughput packet parsing pipeline with PyFlowMeter and an experimental Go capture daemon",
         "Feature vector extraction, normalization, and scikit-learn Random Forest classification",
         "Live WebSocket dashboard streaming anomaly scores and alert telemetry",
       ],
@@ -215,6 +268,17 @@ export const projects: ProjectItem[] = [
     caseStudy: "/work/cipher-watch",
     image: "/images/projects/cipher-watch.svg",
     featured: true,
+    evidence: {
+      problem:
+        "A backup that has never been restored is a hope, not a recovery plan.",
+      approach:
+        "Bash and systemd automation, AES-256 encryption, SHA-256 checksums, and an automated decrypt-and-compare restore drill.",
+      result: {
+        value: "100k",
+        label: "PBKDF2 iterations",
+        note: "AES-256 backups, verified by a 24 h restore drill",
+      },
+    },
     details: {
       overview:
         "Cipher-Watch provides production-hardened Linux administration workflows: automated AES-256 encrypted backups using PBKDF2 key derivation, verified automated restore-drills, log rotation, and statistical anomaly detection via systemd background timers.",
@@ -232,25 +296,37 @@ export const projects: ProjectItem[] = [
   {
     slug: "incident-command-center",
     index: "04",
-    category: "DEVOPS & INCIDENT MANAGEMENT",
+    category: "CLOUD & AI INCIDENT RESPONSE",
     title: "Incident Command Center",
     blurb:
-      "Full-stack incident management platform with real-time alerting, runbook automation, and multi-cloud Terraform provisioning.",
-    stack: ["JavaScript", "Java", "Terraform", "HCL", "Python", "Docker"],
+      "Event-driven AWS pipeline: a failed GitHub Actions run becomes an EventBridge event, a Lambda calls Bedrock for root cause, and a live dashboard shows the result.",
+    stack: ["AWS Lambda", "EventBridge", "Amazon Bedrock", "Spring Boot", "React", "IAM"],
     repo: "https://github.com/coderv1304/incident-command-center",
     caseStudy: "/work/incident-command-center",
     image: "/images/projects/incident-command-center.svg",
     featured: false,
+    evidence: {
+      problem:
+        "A failed CI/CD run costs 20–40 minutes of manual log reading, with no memory of past diagnoses.",
+      approach:
+        "GitHub Actions emits a failure event to EventBridge; Lambda invokes Bedrock; the explanation is stored and rendered on a live dashboard.",
+      result: {
+        value: "0",
+        label: "manual steps from detection to dashboard",
+        note: "team project · First Commit, Sept 2026",
+      },
+    },
     details: {
       overview:
-        "Production-style incident coordination platform featuring on-call paging, real-time alert aggregation, automated runbook dispatch, and multi-cloud IaC provisioning via Terraform.",
+        "Incident Command Center is an event-driven AWS pipeline built for the First Commit hackathon. A failing GitHub Actions workflow publishes a custom event to EventBridge; a Lambda invokes Amazon Bedrock to generate a plain-English root cause; the record is stored and shown on a live dashboard.",
       architecture: [
-        "Java microservices backend managing state machines and incident escalations",
-        "Terraform modules provisioning resilient cloud topologies across environments",
+        "GitHub Actions failure step assumes a narrowly scoped IAM identity with events:PutEvents only",
+        "EventBridge rule matches source dummy.pipeline / BuildFailed and invokes Lambda",
+        "Bedrock generates the root-cause explanation; the dashboard renders it with zero manual steps",
       ],
       outcomes: [
-        "Automated on-call rotation schedules and synthetic alert dispatch",
-        "Tested multi-region disaster recovery runbooks in Terraform",
+        "Detection-to-display path runs without a human in the loop",
+        "Team project: Varun Nair led AWS / DevOps / infrastructure",
       ],
     },
   },
@@ -266,6 +342,17 @@ export const projects: ProjectItem[] = [
     caseStudy: "/work/rates-strategy-lab",
     image: "/images/projects/rates-strategy-lab.svg",
     featured: false,
+    evidence: {
+      problem:
+        "Curve strategies are easy to overfit; most research stops before out-of-sample honesty.",
+      approach:
+        "NSS and QuantLib curve construction, PCA factors, a DV01-neutral 2s10s steepener, and a walk-forward backtest with deflated Sharpe.",
+      result: {
+        value: "5y / 6m",
+        label: "walk-forward train / test windows",
+        note: "headline results intentionally unpublished until a real FRED run",
+      },
+    },
     details: {
       overview:
         "Institutional-style quantitative fixed-income research platform. Yield curve calibration using NSS parametric models, PCA decomposition of curve dynamics, and walk-forward backtesting of DV01-neutral curve steepener strategies.",
@@ -281,42 +368,29 @@ export const projects: ProjectItem[] = [
     },
   },
   {
-    slug: "my-learnings",
-    index: "06",
-    category: "KNOWLEDGE BASE",
-    title: "MY LEARNINGS",
-    blurb:
-      "Continuous engineering knowledge repository cataloging technical notes, architecture patterns, and implementations across DevOps, Cloud, Security, and C++ DSA.",
-    stack: ["C++", "DSA", "DevOps", "AWS Cloud", "Linux", "DevSecOps", "Docker", "AIOps"],
-    repo: "https://github.com/coderv1304/MY-LEARNINGS",
-    caseStudy: "/work/my-learnings",
-    image: "/images/projects/my-learnings.svg",
-    featured: false,
-    details: {
-      overview:
-        "A rigorous, public engineering knowledge repository containing hundreds of documented commands, architectural diagrams, security guidelines, and C++ algorithms.",
-      architecture: [
-        "Structured modular markdown library with clear conceptual boundaries",
-        "Verified command snippets, system configurations, and algorithmic proofs",
-      ],
-      outcomes: [
-        "Public reference base actively updated alongside university and project work",
-        "Comprehensive coverage from Linux internals to distributed cloud architecture",
-      ],
-    },
-  },
-  {
     slug: "varun-portfolio",
-    index: "07",
+    index: "06",
     category: "CLOUD & WEB SYSTEMS",
     title: "Varun Portfolio",
     blurb:
-      "Editorial, technical archive portfolio built with Next.js 15, GSAP scroll choreography, and Lenis smooth scrolling.",
-    stack: ["Next.js 15", "TypeScript", "Tailwind CSS v4", "GSAP", "Three.js", "Lenis"],
+      "Editorial, technical archive portfolio built with Next.js 15, server-rendered content, and a case-study template that publishes limitations with the results.",
+    stack: ["Next.js 15", "TypeScript", "Tailwind CSS v4", "GSAP", "Lenis"],
     repo: "https://github.com/coderv1304/varun-portfolio",
     caseStudy: "/work/varun-portfolio",
     image: "/images/projects/varun-portfolio.svg",
     featured: false,
+    evidence: {
+      problem:
+        "A portfolio that lists tools is not evidence; a recruiter needs claims they can verify in one click.",
+      approach:
+        "Next.js App Router, server-rendered content, per-route metadata, and case studies with methodology and limitations.",
+      result: {
+        value: "170",
+        unit: "KB",
+        label: "JavaScript budget, gzip",
+        note: "enforced in REVIEW.md — a budget, not a vanity metric",
+      },
+    },
   },
 ];
 
@@ -388,71 +462,69 @@ export const disciplines: DisciplineItem[] = [
 
 export const notes: NoteItem[] = [
   {
-    title: "Why approval gates matter in AIOps",
-    excerpt: "Autonomous remediation sounds neat until an LLM drops your primary database. Why human-in-the-loop is the only sane boundary.",
-    type: "DEEP DIVE",
-    cover: "/images/notes/note-1.svg",
-    href: "https://varun-nair-13.hashnode.dev/",
-    source: "Hashnode",
-    date: "OCT 2026",
-  },
-  {
-    title: "Encrypting backups without a vault",
-    excerpt: "Building resilient off-site encrypted backup pipelines with Bash, OpenSSL PBKDF2, and systemd timers.",
+    title: "Building production-style Linux admin scripts: from cron to systemd timers",
+    excerpt:
+      "Five Bash scripts, a systemd service, and the failure modes that only show up on a real machine.",
     type: "BUILD LOG",
-    cover: "/images/notes/note-2.svg",
-    href: "https://varun-nair-13.hashnode.dev/",
-    source: "Hashnode",
-    date: "SEP 2026",
-  },
-  {
-    title: "Reading Kubernetes events like a human",
-    excerpt: "Parsing the noise in k8s events to isolate crash-loop root causes before Prometheus even alerts.",
-    type: "DEEP DIVE",
-    cover: "/images/notes/note-3.svg",
-    href: "https://varun-nair-13.hashnode.dev/",
+    cover: "/images/notes/note-1.svg",
+    href: "https://varun-nair-13.hashnode.dev/building-production-style-linux-admin-scripts-from-cron-to-systemd-timers",
     source: "Hashnode",
     date: "AUG 2026",
   },
   {
-    title: "A homelab that survives reboots",
-    excerpt: "Designing declarative state recovery for local Kind clusters, persistent storage, and DNS fallbacks.",
-    type: "BUILD LOG",
-    cover: "/images/notes/note-4.svg",
-    href: "https://varun-nair-13.hashnode.dev/",
+    title: "A backup you haven't tested restoring from isn't a backup",
+    excerpt:
+      "Encryption, checksum verification, and automated restore testing — the discipline of verify, don't assume.",
+    type: "DEEP DIVE",
+    cover: "/images/notes/note-2.svg",
+    href: "https://varun-nair-13.hashnode.dev/a-backup-you-haven-t-tested-restoring-from-isn-t-a-backup-hardening-my-linux-admin-toolkit",
     source: "Hashnode",
-    date: "JUL 2026",
+    date: "AUG 2026",
+  },
+  {
+    title: "From Bash scripts to production containers",
+    excerpt:
+      "Containerising the backup and monitoring services: build context, naming rules, and the bugs in between.",
+    type: "BUILD LOG",
+    cover: "/images/notes/note-3.svg",
+    href: "https://varun-nair-13.hashnode.dev/from-bash-scripts-to-production-containers",
+    source: "Hashnode",
+    date: "AUG 2026",
+  },
+  {
+    title: "Why approval gates matter in AIOps",
+    excerpt:
+      "Autonomous remediation sounds neat until an LLM drops your primary database. Why human-in-the-loop is the only sane boundary.",
+    type: "DEEP DIVE",
+    cover: "/images/notes/note-4.svg",
+    source: "Draft",
+    draft: true,
+  },
+  {
+    title: "Reading Kubernetes events like a human",
+    excerpt:
+      "Parsing the noise in Kubernetes events to isolate crash-loop root causes before Prometheus even alerts.",
+    type: "DEEP DIVE",
+    cover: "/images/notes/note-5.svg",
+    source: "Draft",
+    draft: true,
   },
   {
     title: "Random Forest vs. real traffic",
-    excerpt: "Why synthetic datasets like CIC-IDS-2017 mislead you on network anomaly detection accuracy in real environments.",
+    excerpt:
+      "Why synthetic datasets like CIC-IDS-2017 mislead you on network anomaly detection accuracy in real environments.",
     type: "DEEP DIVE",
-    cover: "/images/notes/note-5.svg",
-    href: "https://varun-nair-13.hashnode.dev/",
-    source: "Hashnode",
-    date: "JUN 2026",
-  },
-  {
-    title: "Terraform state, demystified",
-    excerpt: "Locking, remote backends, and how to safely recover when state locks get abandoned mid-apply.",
-    type: "BUILD LOG",
     cover: "/images/notes/note-6.svg",
-    href: "https://varun-nair-13.hashnode.dev/",
-    source: "Hashnode",
-    date: "MAY 2026",
+    source: "Draft",
+    draft: true,
   },
 ];
 
 export const timeline: TimelineItem[] = [
   {
-    year: "2024",
-    title: "Learning by breaking",
-    body: "Linux tinkering, shell automation, homelabs, and building foundational mental models around operating systems and networking.",
-  },
-  {
     year: "2025",
     title: "A degree path and a head start",
-    body: "Started Master of Computer Applications (MCA) at VESIT Mumbai, maintaining an 8.49 CGPA while building cloud infrastructure and CI/CD security pipelines.",
+    body: "Started Master of Computer Applications (MCA) at VESIT Mumbai while building cloud infrastructure and CI/CD security pipelines.",
   },
   {
     year: "TODAY",
@@ -462,7 +534,7 @@ export const timeline: TimelineItem[] = [
   {
     year: "NEXT",
     title: "Reliability at scale",
-    body: "Targeting DevOps, Cloud, and SRE internships to engineer high-throughput, fault-tolerant infrastructure systems under real production load.",
+    body: "Targeting platform engineering, DevOps and SRE internships to run high-throughput, fault-tolerant infrastructure under real production load.",
   },
 ];
 

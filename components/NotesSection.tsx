@@ -1,14 +1,17 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
-import Link from "next/link";
+import NoteCard from "@/components/NoteCard";
 import { notes } from "@/lib/content";
 
 export default function NotesSection() {
   const [filter, setFilter] = useState<"ALL" | "BUILD LOG" | "DEEP DIVE">("ALL");
 
-  const filteredNotes = notes.filter((note) => {
+  // Drafts stay out of the page entirely: a card without a real post URL
+  // would be a dead end for a reader.
+  const publishedNotes = notes.filter((note) => !note.draft);
+
+  const filteredNotes = publishedNotes.filter((note) => {
     if (filter === "ALL") return true;
     return note.type === filter;
   });
@@ -34,7 +37,7 @@ export default function NotesSection() {
             marginBottom: "60px",
           }}
         >
-          <span className="eyebrow-label">05 / IDEAS THAT TRAVEL</span>
+          <span className="eyebrow-label">06 / IDEAS THAT TRAVEL</span>
           <span className="eyebrow-label" style={{ color: "var(--accent)" }}>
             WRITTEN DOWN. SHIPPED. EXPLAINED.
           </span>
@@ -125,162 +128,18 @@ export default function NotesSection() {
           })}
         </div>
 
+        <p className="sr-only" role="status">
+          Showing {filteredNotes.length} of {publishedNotes.length} notes
+          {filter === "ALL" ? "" : ` in ${filter.toLowerCase()}`}.
+        </p>
+
         {/* Grid: repeat(3, 1fr), gap 45px 25px */}
         <div
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-[45px] gap-x-[25px]"
           style={{ marginBottom: "80px" }}
         >
           {filteredNotes.map((note) => (
-            <article
-              key={note.title}
-              className="group"
-              style={{ display: "flex", flexDirection: "column" }}
-            >
-              {/* 16:9 panel containing cover image + centered 52px play/book icon */}
-              <div
-                style={{
-                  position: "relative",
-                  aspectRatio: "16/9",
-                  background: "#171410",
-                  border: "1px solid #51433280",
-                  overflow: "hidden",
-                }}
-              >
-                <Image
-                  src={note.cover}
-                  alt={note.title}
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  style={{
-                    objectFit: "cover",
-                    transition: "transform 0.65s ease, filter 0.65s ease",
-                    filter: "saturate(0.9)",
-                  }}
-                  className="group-hover:scale-[1.035] group-hover:filter-none"
-                />
-
-                {/* Corner Tag */}
-                <div
-                  style={{
-                    position: "absolute",
-                    top: "14px",
-                    left: "14px",
-                    background: "#030303d9",
-                    border: "1px solid #8e796340",
-                    padding: "4px 8px",
-                    fontFamily: "var(--font-mono)",
-                    fontSize: "8px",
-                    letterSpacing: "1px",
-                    color: "var(--accent)",
-                    zIndex: 2,
-                  }}
-                >
-                  {note.type}
-                </div>
-
-                {/* Centered 52px circular icon */}
-                <div
-                  style={{
-                    position: "absolute",
-                    top: "50%",
-                    left: "50%",
-                    transform: "translate(-50%, -50%)",
-                    width: "52px",
-                    height: "52px",
-                    borderRadius: "50%",
-                    background: "#090909d9",
-                    border: "1px solid #ccdcf524",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    color: "var(--ink)",
-                    zIndex: 2,
-                    transition: "border-color 0.2s ease, transform 0.2s ease",
-                  }}
-                  className="group-hover:border-[#ff8c59] group-hover:scale-105"
-                  aria-hidden="true"
-                >
-                  <svg
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
-                    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
-                  </svg>
-                </div>
-              </div>
-
-              {/* Caption below */}
-              <div style={{ marginTop: "18px" }}>
-                <div
-                  style={{
-                    fontFamily: "var(--font-mono)",
-                    fontSize: "9px",
-                    letterSpacing: "1px",
-                    color: "var(--muted)",
-                    marginBottom: "6px",
-                    textTransform: "uppercase",
-                  }}
-                >
-                  VARUN NAIR / INFRASTRUCTURE
-                </div>
-                <h3
-                  style={{
-                    fontFamily: "var(--font-sans)",
-                    fontSize: "24px",
-                    fontWeight: 500,
-                    lineHeight: 1.25,
-                    color: "var(--ink)",
-                    letterSpacing: "-0.5px",
-                    marginBottom: "8px",
-                  }}
-                >
-                  <a
-                    href={note.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{ color: "inherit", textDecoration: "none" }}
-                    className="hover:text-[#ff8c59]"
-                  >
-                    {note.title}
-                  </a>
-                </h3>
-                <p
-                  style={{
-                    fontSize: "13px",
-                    lineHeight: 1.7,
-                    color: "var(--muted-2)",
-                    marginBottom: "12px",
-                  }}
-                >
-                  {note.excerpt}
-                </p>
-                <a
-                  href={note.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
-                    fontFamily: "var(--font-mono)",
-                    fontSize: "10px",
-                    letterSpacing: "1px",
-                    color: "var(--accent)",
-                    textDecoration: "none",
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: "4px",
-                  }}
-                  className="hover:underline"
-                >
-                  Read the note ↗
-                </a>
-              </div>
-            </article>
+            <NoteCard key={note.title} note={note} />
           ))}
         </div>
 

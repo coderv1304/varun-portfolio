@@ -35,7 +35,17 @@ const nextConfig = {
       },
       {
         source: "/resume",
-        destination: "/Varun_Nair.pdf",
+        destination: "/Varun_Nair_Resume.pdf",
+        permanent: true,
+      },
+      {
+        source: "/Varun_Nair.pdf",
+        destination: "/Varun_Nair_Resume.pdf",
+        permanent: true,
+      },
+      {
+        source: "/work/my-learnings",
+        destination: "/work",
         permanent: true,
       },
     ];

@@ -1,27 +1,26 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900">
   <defs>
-    <linearGradient id="nbg-6" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#14110e"/>
-      <stop offset="100%" stop-color="#080706"/>
+    <linearGradient id="nbg" x1="0" y1="0" x2="0.7" y2="1">
+      <stop offset="0%" stop-color="#16130f"/>
+      <stop offset="100%" stop-color="#070605"/>
     </linearGradient>
   </defs>
-  <rect width="1600" height="900" fill="url(#nbg-6)"/>
-  <rect x="30" y="30" width="1540" height="840" fill="none" stroke="#514332" stroke-opacity="0.5" stroke-width="1"/>
-  
-  <g opacity="0.25" stroke="#ff8c59" stroke-width="1" fill="none">
-    <line x1="800" y1="100" x2="800" y2="800"/>
-    <line x1="100" y1="450" x2="1500" y2="450"/>
-    <circle cx="800" cy="450" r="240" stroke-dasharray="6 8"/>
-  </g>
-  
-  <rect x="80" y="80" width="140" height="34" fill="#030303" stroke="#8e7963" stroke-width="1" rx="4"/>
-  <text x="150" y="102" font-family="monospace" font-size="12" fill="#ff8c59" text-anchor="middle" letter-spacing="2">BUILD LOG</text>
+  <rect width="1600" height="900" fill="url(#nbg)"/>
 
-  <text x="1520" y="102" font-family="monospace" font-size="14" fill="#aaa9a4" text-anchor="end" letter-spacing="2">NOTE // 06</text>
-  
-  <text x="800" y="440" font-family="'DM Sans', sans-serif" font-size="48" font-weight="500" fill="#f1eee8" text-anchor="middle" letter-spacing="-1">Terraform state, demystified</text>
-  <text x="800" y="500" font-family="monospace" font-size="16" fill="#aaa9a4" text-anchor="middle" letter-spacing="3">LOCKING, STATE RECOVERY & DRIFT REMEDIATION</text>
+  <text x="1490" y="700" font-family="'JetBrains Mono', monospace" font-size="420" fill="#ff8c59" fill-opacity="0.045" text-anchor="end">06</text>
 
-  <text x="80" y="820" font-family="monospace" font-size="13" fill="#aaa9a4" letter-spacing="1">FIELD NOTE · 1600×900</text>
-  <text x="1520" y="820" font-family="monospace" font-size="13" fill="#ff8c59" text-anchor="end" letter-spacing="2">VARUN-NAIR-13.HASHNODE.DEV</text>
+  <line x1="110" y1="90" x2="1490" y2="90" stroke="#6b5842" stroke-opacity="0.45"/>
+  <rect x="110" y="118" width="176" height="38" fill="none" stroke="#8e7963" stroke-opacity="0.55"/>
+  <text x="198" y="143" font-family="'JetBrains Mono', monospace" font-size="15" fill="#ff8c59" text-anchor="middle" letter-spacing="3">DEEP DIVE</text>
+  <text x="1490" y="143" font-family="'JetBrains Mono', monospace" font-size="15" fill="#8a8580" text-anchor="end" letter-spacing="3">NOTE // 06</text>
+
+  <rect x="110" y="300" width="56" height="3" fill="#ff8c59"/>
+  <text x="110" y="404" font-family="'DM Sans', system-ui, sans-serif" font-size="76" font-weight="500" fill="#f4f1ea" letter-spacing="-2">Random Forest vs.</text>
+  <text x="110" y="486" font-family="'DM Sans', system-ui, sans-serif" font-size="76" font-weight="500" fill="#f4f1ea" letter-spacing="-2">real traffic</text>
+
+  <text x="110" y="620" font-family="'JetBrains Mono', monospace" font-size="21" fill="#a9a49c" letter-spacing="4">PREVALENCE · DATASET TRANSFER</text>
+
+  <line x1="110" y1="700" x2="1490" y2="700" stroke="#6b5842" stroke-opacity="0.45"/>
+  <text x="110" y="756" font-family="'JetBrains Mono', monospace" font-size="16" fill="#8a8580" letter-spacing="2">VARUN NAIR</text>
+  <text x="1490" y="756" font-family="'JetBrains Mono', monospace" font-size="16" fill="#ff8c59" text-anchor="end" letter-spacing="2">VARUN-NAIR-13.HASHNODE.DEV</text>
 </svg>

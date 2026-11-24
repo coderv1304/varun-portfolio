@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "Varun Nair | Infrastructure, Security & Cloud";
+export const alt = "Varun Nair | Platform, DevOps & SRE Intern";
 export const size = {
   width: 1200,
   height: 630,
@@ -57,19 +57,23 @@ export default async function Image() {
               backgroundColor: "#ff8c59",
             }}
           />
-          <span>ENGINEER. BUILDER. AUTOMATOR.</span>
+          <span>PLATFORM ENGINEERING · DEVOPS · SRE</span>
         </div>
 
         <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
           <div
             style={{
+              display: "flex",
+              alignItems: "baseline",
+              gap: "18px",
               fontSize: "96px",
               fontWeight: 400,
               letterSpacing: "-4px",
               lineHeight: 1,
             }}
           >
-            Varun <span style={{ fontStyle: "italic", color: "#ff8c59" }}>Nair</span>
+            <span>Varun</span>
+            <span style={{ fontStyle: "italic", color: "#ff8c59" }}>Nair</span>
           </div>
           <div
             style={{
@@ -96,8 +100,8 @@ export default async function Image() {
             fontFamily: "monospace",
           }}
         >
-          <div>INFRASTRUCTURE / SECURITY / AUTOMATION</div>
-          <div style={{ color: "#ff8c59" }}>MUMBAI, IN ↗ THE WORLD</div>
+          <div>PLATFORM / DEVOPS / SRE</div>
+          <div style={{ color: "#ff8c59" }}>MUMBAI, IN · DEC 2026 – JUN 2027</div>
         </div>
       </div>
     ),

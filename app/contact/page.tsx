@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
 import { site } from "@/lib/content";
+import { buildMetadata } from "@/lib/seo";
+import TrackedAnchor from "@/components/TrackedAnchor";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
   title: "Contact | Varun Nair",
-  description: "Get in touch with Varun Nair for DevOps, Cloud, and Infrastructure engineering opportunities.",
-};
+  description:
+    "Available for DevOps, cloud and platform internships from December 2026. Email, LinkedIn, GitHub, and a downloadable résumé.",
+  path: "/contact",
+});
 
 export default function ContactPage() {
   return (
@@ -74,8 +78,10 @@ export default function ContactPage() {
         </h1>
 
         <div style={{ marginBottom: "40px" }}>
-          <a
+          <TrackedAnchor
             href={`mailto:${site.email}`}
+            event="contact_click"
+            eventData={{ channel: "email", placement: "contact_page" }}
             style={{
               fontFamily: "var(--font-sans)",
               fontSize: "clamp(24px, 4vw, 42px)",
@@ -105,7 +111,7 @@ export default function ContactPage() {
               <line x1="7" y1="17" x2="17" y2="7" />
               <polyline points="7 7 17 7 17 17" />
             </svg>
-          </a>
+          </TrackedAnchor>
         </div>
 
         <p

@@ -2,11 +2,14 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { site, disciplines } from "@/lib/content";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
   title: "About | Varun Nair",
-  description: "Background, operational philosophy, and academic trajectory of Varun Nair.",
-};
+  description:
+    "How I work: failure modes first, explicit boundaries, automated recovery. Background, operating principles, and what I'm looking for next.",
+  path: "/about",
+});
 
 export default function AboutPage() {
   return (
@@ -138,11 +141,16 @@ export default function AboutPage() {
               <div style={{ fontSize: "13px", color: "var(--muted)", marginBottom: "12px" }}>
                 {site.education.institution} · {site.education.period}
               </div>
-              <div style={{ display: "flex", alignItems: "baseline", gap: "8px" }}>
-                <span className="proof-numeral">{site.education.cgpa}</span>
-                <span style={{ fontFamily: "var(--font-mono)", fontSize: "10px", color: "var(--muted)" }}>
-                  AGGREGATE CGPA (SEMESTER 2)
-                </span>
+              <div
+                style={{
+                  fontFamily: "var(--font-mono)",
+                  fontSize: "10px",
+                  letterSpacing: "0.8px",
+                  color: "var(--muted)",
+                  textTransform: "uppercase",
+                }}
+              >
+                Graduating June 2027 · Available Dec 2026 – Jun 2027
               </div>
             </div>
 

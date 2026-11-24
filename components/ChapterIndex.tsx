@@ -7,7 +7,7 @@ export default function ChapterIndex() {
     { label: "All work", href: "/work" },
     { label: "Systems & infrastructure", href: "/work" },
     { label: "Writing & build logs", href: "/notes" },
-    { label: "Résumé", href: "/Varun_Nair.pdf", target: "_blank" },
+    { label: "Résumé", href: "/Varun_Nair_Resume.pdf", target: "_blank" },
   ];
 
   return (

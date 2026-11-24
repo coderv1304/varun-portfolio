@@ -1,14 +1,19 @@
+import type { Metadata } from "next";
 import HeroSection from "@/components/HeroSection";
+import SelectedWork from "@/components/SelectedWork";
 import ProofStrip from "@/components/ProofStrip";
 import AboutSection from "@/components/AboutSection";
-import SelectedWork from "@/components/SelectedWork";
-import ChapterIndex from "@/components/ChapterIndex";
 import ExpertiseSection from "@/components/ExpertiseSection";
-import ImpactSection from "@/components/ImpactSection";
 import NotesSection from "@/components/NotesSection";
-import BeyondSection from "@/components/BeyondSection";
-import TimelineSection from "@/components/TimelineSection";
 import ContactSection from "@/components/ContactSection";
+import { buildMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = buildMetadata({
+  title: "Varun Nair | DevOps, SRE & Platform Intern, Mumbai",
+  description:
+    "Platform, DevOps and SRE intern in Mumbai, available Dec 2026 to Jun 2027. Six infrastructure case studies with methodology and stated limits.",
+  path: "/",
+});
 
 export default function Home() {
   return (
@@ -16,34 +21,22 @@ export default function Home() {
       {/* 01 HERO */}
       <HeroSection />
 
-      {/* 02 PROOF STRIP */}
-      <ProofStrip />
-
-      {/* 03 ABOUT */}
-      <AboutSection />
-
-      {/* 04 SELECTED WORK */}
+      {/* 02 SELECTED WORK — evidence first */}
       <SelectedWork />
 
-      {/* 05 CHAPTER INDEX */}
-      <ChapterIndex />
+      {/* 03 PROOF STRIP */}
+      <ProofStrip />
 
-      {/* 06 EXPERTISE */}
+      {/* 04 ABOUT */}
+      <AboutSection />
+
+      {/* 05 EXPERTISE */}
       <ExpertiseSection />
 
-      {/* 07 IMPACT */}
-      <ImpactSection />
-
-      {/* 08 MEDIA SHOWCASE (NOTES) */}
+      {/* 06 NOTES */}
       <NotesSection />
 
-      {/* 09 SPEAKING / BEYOND */}
-      <BeyondSection />
-
-      {/* 10 INTERLUDE TIMELINE */}
-      <TimelineSection />
-
-      {/* 11 CONTACT */}
+      {/* 07 CONTACT */}
       <ContactSection />
     </main>
   );

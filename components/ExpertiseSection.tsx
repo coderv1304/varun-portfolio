@@ -34,7 +34,7 @@ export default function ExpertiseSection() {
             paddingBottom: "16px",
           }}
         >
-          <span className="eyebrow-label">03 / HOW I THINK & WORK</span>
+          <span className="eyebrow-label">05 / HOW I THINK & WORK</span>
           <span className="eyebrow-label" style={{ color: "var(--accent)" }}>
             DEPTH MEETS PERSPECTIVE
           </span>

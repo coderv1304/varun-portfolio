@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-export default function MotionToggle() {
+export default function MotionToggle({ inline = false }: { inline?: boolean }) {
   const [motionOn, setMotionOn] = useState(true);
   const [mounted, setMounted] = useState(false);
 
@@ -28,7 +28,7 @@ export default function MotionToggle() {
   return (
     <button
       onClick={toggleMotion}
-      className="motion-toggle"
+      className={inline ? "motion-toggle motion-toggle-inline" : "motion-toggle"}
       aria-label={`Toggle animation motion. Currently ${motionOn ? "ON" : "OFF"}`}
       title="Toggle animation motion"
     >

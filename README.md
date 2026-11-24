@@ -1,86 +1,63 @@
-# Varun Nair
+# Varun Nair — portfolio
 
-DevOps • Cloud • Linux • Automation • Security
+Platform engineering, DevOps and SRE intern portfolio. Next.js 15 (App Router), server-rendered
+content, six engineering case studies that publish methodology and limitations alongside results.
 
-I’m Varun Nair, a technology-focused developer building reliable systems around cloud infrastructure, Linux administration, automation, and secure operations. This portfolio showcases my work across DevOps, cloud engineering, scripting, and modern infrastructure projects.
+**Hiring snapshot**
 
-## About Me
+- Role sought: Platform Engineering (primary), DevOps, SRE, Cloud, MLOps, AIOps
+- Availability: internships Dec 2026 – Jun 2027; full-time from Jun 2027
+- Location: Mumbai, India
+- Résumé: [`/Varun_Nair_Resume.pdf`](public/Varun_Nair_Resume.pdf) (linked from the nav and hero)
+- GitHub: [coderv1304](https://github.com/coderv1304) · LinkedIn: [connectvarun13](https://www.linkedin.com/in/connectvarun13) · Hashnode: [varun-nair-13](https://varun-nair-13.hashnode.dev/)
 
-- Building resilient systems through automation and cloud-native practices
-- Interested in Linux, infrastructure engineering, CI/CD, and security
-- Focused on practical, scalable implementations for real-world environments
-- Exploring DevSecOps, MLOps, and AIOps workflows
-
-## GitHub Profile
-
-- GitHub: [coderv1304](https://github.com/coderv1304)
-- Repositories include portfolio work, Linux/system automation, data structures and algorithms, and network anomaly detection projects
-
-## Tech Stack
-
-- Linux and shell scripting
-- Git and GitHub workflows
-- Docker and container-based tooling
-- Kubernetes and cloud infrastructure concepts
-- CI/CD automation
-- Infrastructure monitoring and troubleshooting
-- Python, JavaScript, TypeScript, Bash
-- Security-focused system practice and automation
-
-## Featured Repositories
-
-### [varun-portfolio](https://github.com/coderv1304/varun-portfolio)
-
-Personal portfolio website built with Next.js and TypeScript, designed like a futuristic operations dashboard for a DevOps-focused identity.
-
-### [Cipher-Watch](https://github.com/coderv1304/Cipher-Watch)
-
-A Linux administration project focused on Bash automation and systemd services for operational monitoring and security workflows.
-
-### [network-anomaly-detection](https://github.com/coderv1304/network-anomaly-detection)
-
-A project centered around detecting unusual network behaviour and supporting observability in distributed systems.
-
-### [MY LEARNINGS](https://github.com/coderv1304/MY-LEARNINGS)
-
-Comprehensive engineering knowledge base and practical repository cataloging notes, architectures, and implementations across DevOps, AWS Cloud, Linux systems, DevSecOps, and AI engineering.
-
-### [Rates Strategy Lab](https://github.com/coderv1304/rates-strategy-lab)
-
-Python quantitative research platform for US interest rates: Treasury curve construction (Nelson-Siegel-Svensson & QuantLib), PCA factor modeling, bond analytics (DV01, convexity), SOFR swap scenario engines, and walk-forward backtesting of DV01-neutral 2s10s curve steepeners.
-
-## Current Focus
-
-- DevOps and cloud engineering workflows
-- Secure infrastructure automation
-- Linux administration and scripting
-- Scalable system design
-- Building polished, production-ready portfolio and tooling projects
-
-## Portfolio Local Setup
+## Local setup
 
 ```bash
 npm install
 npm run dev
 ```
 
-Then open:
+Open `http://localhost:3000`.
 
-```text
-http://localhost:3000
-```
-
-## Production Build
+## Production build
 
 ```bash
 npm run build
-npm run start
+npm start
 ```
 
-## Deployment
+Production build output is recorded in [`REVIEW.md`](REVIEW.md), along with the claim audit, the
+SEO checks that were run, and the checks that were not.
 
-This portfolio is designed to be deployed easily on platforms like Vercel and other modern hosting providers.
+## Link crawl
 
-## Contact
+```bash
+npm run build
+npx next start -p 3100
+node scripts/link-check.mjs
+```
 
-For collaboration, opportunities, or project discussions, connect through the portfolio or GitHub profile.
+The crawler walks every internal route (including case studies), reports HTTP status per URL, and
+records external links separately.
+
+## What this site does and does not claim
+
+**Does:** every project number traces to a repository, the dissertation behind NetShield, or a
+measurement taken for this site. Case studies state limitations, including unvalidated live
+traffic accuracy.
+
+**Does not:** promise search rankings, invent metrics, testimonials, logos or "X+" padding, or
+claim production validation for lab and hackathon work. Where a figure does not exist it is
+labelled unpublished (see Rates Strategy Lab) instead of estimated.
+
+Realistic SEO expectations: ranking for the name query and a handful of long-tail queries
+("DevOps intern Mumbai", "NetShield network anomaly detection") is plausible over time. Ranking
+for competitive head terms such as "platform engineer" is not, and nothing on this site promises
+it.
+
+## Analytics
+
+Vercel Web Analytics (cookieless) is loaded only on a Vercel deployment. Tracked events: résumé
+downloads, contact clicks, outbound repository clicks, referral views, and case-study scroll depth
+at 25/50/75/100%. No cookie banner is required.

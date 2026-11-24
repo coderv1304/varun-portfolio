@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Beyond the Terminal | Varun Nair",
-  description: "Outside the terminal: music, singing, and finding rhythm beyond engineering.",
-};
+export const metadata: Metadata = buildMetadata({
+  title: "Beyond the terminal | Varun Nair",
+  description:
+    "Music, singing, and the discipline that carries from stage to systems.",
+  path: "/beyond",
+});
 
 export default function BeyondPage() {
   const equalizerBars = [

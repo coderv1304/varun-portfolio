@@ -9,92 +9,72 @@ export default function ProofStrip() {
       aria-label="Proof metrics"
       style={{
         borderBlock: "1px solid var(--line)",
-        backgroundColor: "#101010e8",
+        backgroundColor: "#101010",
         padding: "37px var(--gutter)",
         position: "relative",
         zIndex: 10,
       }}
     >
       <div
-        className="grid grid-cols-1 md:grid-cols-[1.2fr_1.5fr_1fr] lg:grid-cols-[1.2fr_1.5fr_1fr_1fr] gap-6 lg:gap-9"
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1fr_1fr_1fr_0.9fr] gap-6 lg:gap-9"
         style={{
           maxWidth: "var(--maxw)",
           margin: "0 auto",
         }}
       >
-        {/* Cell 1: 8.49 */}
-        <div
-          className="flex flex-col justify-center pr-0 lg:pr-8 border-b md:border-b-0 md:border-r border-[var(--line)] pb-6 md:pb-0"
-        >
-          <div className="proof-numeral">
-            {stats[0].value}
-            <span style={{ color: "var(--accent)", fontSize: "0.55em", marginLeft: "0.06em" }}>
-              /10
-            </span>
-          </div>
+        {stats.map((stat, index) => (
           <div
-            style={{
-              fontFamily: "var(--font-mono)",
-              fontSize: "10px",
-              letterSpacing: "0.8px",
-              color: "var(--muted)",
-              marginTop: "8px",
-              textTransform: "uppercase",
-            }}
+            key={stat.label}
+            className={
+              index === stats.length - 1
+                ? "flex flex-col justify-center"
+                : "flex flex-col justify-center pr-0 lg:pr-8 border-b md:border-b-0 md:border-r border-[var(--line)] pb-6 md:pb-0"
+            }
           >
-            {stats[0].label}
+            <div className="proof-numeral">
+              {stat.value}
+              {stat.suffix && (
+                <span
+                  style={{
+                    color: "var(--accent)",
+                    fontSize: "0.55em",
+                    marginLeft: "0.06em",
+                  }}
+                >
+                  {stat.suffix}
+                </span>
+              )}
+            </div>
+            <div
+              style={{
+                fontFamily: "var(--font-mono)",
+                fontSize: "10px",
+                letterSpacing: "0.8px",
+                color: "var(--muted)",
+                marginTop: "8px",
+                textTransform: "uppercase",
+              }}
+            >
+              {stat.label}
+            </div>
+            {stat.sublabel && (
+              <div
+                style={{
+                  fontFamily: "var(--font-mono)",
+                  fontSize: "9px",
+                  letterSpacing: "0.6px",
+                  color: "var(--accent)",
+                  marginTop: "6px",
+                  textTransform: "uppercase",
+                }}
+              >
+                {stat.sublabel}
+              </div>
+            )}
           </div>
-        </div>
+        ))}
 
-        {/* Cell 2: 07 */}
-        <div
-          className="flex flex-col justify-center pr-0 lg:pr-8 border-b md:border-b-0 md:border-r border-[var(--line)] pb-6 md:pb-0"
-        >
-          <div className="proof-numeral">
-            {stats[1].value}
-            <span style={{ color: "var(--accent)", fontSize: "0.55em", marginLeft: "0.06em" }}>
-              +
-            </span>
-          </div>
-          <div
-            style={{
-              fontFamily: "var(--font-mono)",
-              fontSize: "10px",
-              letterSpacing: "0.8px",
-              color: "var(--muted)",
-              marginTop: "8px",
-              textTransform: "uppercase",
-            }}
-          >
-            {stats[1].label}
-          </div>
-        </div>
-
-        {/* Cell 3: 11 */}
-        <div
-          className="flex flex-col justify-center pr-0 lg:pr-8 border-b lg:border-b-0 lg:border-r border-[var(--line)] pb-6 lg:pb-0"
-        >
-          <div className="proof-numeral">
-            {stats[2].value}
-            <span style={{ color: "var(--accent)", fontSize: "0.55em", marginLeft: "0.06em" }}>
-              +
-            </span>
-          </div>
-          <div
-            style={{
-              fontFamily: "var(--font-mono)",
-              fontSize: "10px",
-              letterSpacing: "0.8px",
-              color: "var(--muted)",
-              marginTop: "8px",
-              textTransform: "uppercase",
-            }}
-          >
-            {stats[2].label}
-          </div>
-        </div>
-
-        {/* Cell 4: CTA (hidden <=1050px) */}
+        {/* CTA (hidden <=1050px) */}
         <div className="hidden lg:flex items-center justify-between pl-4">
           <Link
             href="/#work"

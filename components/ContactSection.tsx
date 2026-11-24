@@ -1,6 +1,7 @@
 "use client";
 
 import { site } from "@/lib/content";
+import { trackEvent } from "@/lib/analytics";
 
 export default function ContactSection() {
   return (
@@ -79,6 +80,7 @@ export default function ContactSection() {
         <div style={{ marginBottom: "36px" }}>
           <a
             href={`mailto:${site.email}`}
+            onClick={() => trackEvent("contact_click", { channel: "email", placement: "contact_section" })}
             style={{
               fontFamily: "var(--font-sans)",
               fontSize: "clamp(20px, 3.5vw, 36px)",
@@ -109,6 +111,33 @@ export default function ContactSection() {
               <line x1="7" y1="17" x2="17" y2="7" />
               <polyline points="7 7 17 7 17 17" />
             </svg>
+          </a>
+        </div>
+
+        {/* Résumé download */}
+        <div style={{ marginBottom: "28px" }}>
+          <a
+            href="/Varun_Nair_Resume.pdf"
+            download
+            onClick={() => trackEvent("resume_download", { placement: "contact_section" })}
+            style={{
+              fontFamily: "var(--font-mono)",
+              fontSize: "11px",
+              letterSpacing: "1px",
+              color: "var(--ink)",
+              textDecoration: "none",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "8px",
+              border: "1px solid var(--line)",
+              padding: "14px 20px",
+              minHeight: "44px",
+              transition: "border-color 0.2s ease, color 0.2s ease",
+            }}
+            className="hover:!border-[#ff8c59] hover:!text-[#ff8c59]"
+          >
+            <span>Download résumé (PDF)</span>
+            <span aria-hidden="true">↓</span>
           </a>
         </div>
 

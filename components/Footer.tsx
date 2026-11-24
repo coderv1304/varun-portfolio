@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import MotionToggle from "./MotionToggle";
 import { site } from "@/lib/content";
 
 export default function Footer() {
@@ -44,7 +45,7 @@ export default function Footer() {
             <span style={{ marginLeft: "12px", color: "var(--muted)" }}>© 2026</span>
           </div>
           <div className="text-left md:text-center" style={{ color: "var(--muted-2)" }}>
-            DEVOPS / CLOUD / DEVSECOPS / MLOPS / AIOPS
+            PLATFORM / DEVOPS / SRE
           </div>
           <div className="text-left md:text-right" style={{ color: "var(--accent)" }}>
             MUMBAI, INDIA ↗ THE WORLD
@@ -83,26 +84,29 @@ export default function Footer() {
             ))}
           </div>
 
-          <button
-            onClick={scrollToTop}
-            aria-label="Scroll back to top"
-            style={{
-              width: "40px",
-              height: "40px",
-              borderRadius: "50%",
-              border: "1px solid var(--line)",
-              background: "transparent",
-              color: "var(--ink)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              cursor: "pointer",
-              transition: "all 0.2s ease",
-            }}
-            className="hover:border-[#ff8c59] hover:text-[#ff8c59]"
-          >
-            ↑
-          </button>
+          <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+            <MotionToggle inline />
+            <button
+              onClick={scrollToTop}
+              aria-label="Scroll back to top"
+              style={{
+                width: "40px",
+                height: "40px",
+                borderRadius: "50%",
+                border: "1px solid var(--line)",
+                background: "transparent",
+                color: "var(--ink)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                cursor: "pointer",
+                transition: "all 0.2s ease",
+              }}
+              className="hover:border-[#ff8c59] hover:text-[#ff8c59]"
+            >
+              ↑
+            </button>
+          </div>
         </div>
       </div>
     </footer>

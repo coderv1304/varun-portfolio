@@ -3,10 +3,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { projects } from "@/lib/content";
+import { trackEvent } from "@/lib/analytics";
 
 export default function SelectedWork() {
   const featuredProjects = projects.filter((p) => p.featured);
-  const moreProjects = projects.filter((p) => !p.featured && p.slug !== "varun-portfolio");
+  const moreProjects = projects.filter((p) => !p.featured);
 
   return (
     <section
@@ -132,6 +133,9 @@ export default function SelectedWork() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={`Open ${project.title} on GitHub`}
+                      onClick={() =>
+                        trackEvent("repo_click", { project: project.slug, placement: "evidence_card" })
+                      }
                       style={{
                         color: "var(--muted)",
                         fontSize: "11px",
@@ -268,28 +272,73 @@ export default function SelectedWork() {
                         fontSize: "13px",
                         lineHeight: 1.8,
                         color: "var(--muted-2)",
-                        marginBottom: "14px",
+                        marginBottom: "18px",
                         maxWidth: "600px",
                       }}
                     >
                       {project.blurb}
                     </p>
-                    <Link
-                      href={project.caseStudy}
-                      style={{
-                        fontFamily: "var(--font-mono)",
-                        fontSize: "10px",
-                        letterSpacing: "1px",
-                        color: "var(--accent)",
-                        textDecoration: "none",
-                        display: "inline-flex",
-                        alignItems: "center",
-                        gap: "4px",
-                      }}
-                      className="hover:underline"
-                    >
-                      Explore the story ↗
-                    </Link>
+
+                    {/* Evidence block: problem → approach → measured result */}
+                    <div className="evidence-block">
+                      <div className="evidence-result">
+                        <span className="evidence-value">
+                          {project.evidence.result.value}
+                          {project.evidence.result.unit && (
+                            <span className="evidence-unit">
+                              {project.evidence.result.unit}
+                            </span>
+                          )}
+                        </span>
+                        <span className="evidence-result-label">
+                          {project.evidence.result.label}
+                        </span>
+                      </div>
+
+                      {project.evidence.result.note && (
+                        <p className="evidence-note">
+                          {project.evidence.result.note}
+                        </p>
+                      )}
+
+                      <dl className="evidence-grid">
+                        <div>
+                          <dt>PROBLEM</dt>
+                          <dd>{project.evidence.problem}</dd>
+                        </div>
+                        <div>
+                          <dt>APPROACH</dt>
+                          <dd>{project.evidence.approach}</dd>
+                        </div>
+                      </dl>
+
+                      <ul className="evidence-stack" aria-label={`${project.title} stack`}>
+                        {project.stack.slice(0, 5).map((tech) => (
+                          <li key={tech}>{tech}</li>
+                        ))}
+                        {project.stack.length > 5 && (
+                          <li className="evidence-stack-more">
+                            +{project.stack.length - 5}
+                          </li>
+                        )}
+                      </ul>
+
+                      <div className="evidence-links">
+                        <Link href={project.caseStudy}>
+                          Case study <span aria-hidden="true">→</span>
+                        </Link>
+                        <a
+                          href={project.repo}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={() =>
+                            trackEvent("repo_click", { project: project.slug, placement: "evidence_links" })
+                          }
+                        >
+                          Repository <span aria-hidden="true">↗</span>
+                        </a>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

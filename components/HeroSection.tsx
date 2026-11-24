@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import Link from "next/link";
 import gsap from "gsap";
 import HeroArtifact from "./HeroArtifact";
 import { site } from "@/lib/content";
+import { trackEvent } from "@/lib/analytics";
 
 export default function HeroSection() {
   const heroRef = useRef<HTMLElement>(null);
@@ -77,25 +77,62 @@ export default function HeroSection() {
           </span>
         </h1>
 
-        {/* Kicker — sits below the name so it never crosses the portrait */}
+        {/* Kicker — role line, below the name so it never crosses the portrait */}
         <span className="hero-kicker hero-fade">
-          <span className="signal-text">{site.bio.kicker}</span>
+          <span className="signal-text">{site.role}</span>
         </span>
 
-        {/* Description & Action CTA Buttons */}
+        {/* Location + availability window */}
+        <div className="hero-meta hero-fade">
+          <span>{site.location}</span>
+          <span className="hero-meta-sep" aria-hidden="true">
+            /
+          </span>
+          <span>{site.availability}</span>
+        </div>
+
+        {/* Description, proof line, and action CTA buttons */}
         <div className="hero-description hero-fade">
-          <p>
-            I build secure, observable infrastructure —
-            <br className="desktop-break" />
-            and the automation that keeps it running.
+          <p>{site.bio.description}</p>
+
+          <p className="hero-proof">
+            <span className="hero-proof-value">{site.proof.value}</span>
+            <span>{site.proof.label}</span>
+            <span className="hero-proof-source">{site.proof.source}</span>
           </p>
 
           <div className="hero-actions">
-            <a href="#work" className="pill-link">
-              <span>Explore my work</span>
+            <a
+              href="/Varun_Nair_Resume.pdf"
+              download
+              className="pill-link"
+              onClick={() =>
+                trackEvent("resume_download", { placement: "hero" })
+              }
+            >
+              <span>Download résumé (PDF)</span>
               <svg
                 width="16"
                 height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M12 3v12" />
+                <path d="m7 10 5 5 5-5" />
+                <path d="M5 21h14" />
+              </svg>
+            </a>
+
+            <a href="#work" className="text-link">
+              <span>View selected work</span>
+              <svg
+                width="15"
+                height="15"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -108,24 +145,6 @@ export default function HeroSection() {
                 <path d="m19 12-7 7-7-7" />
               </svg>
             </a>
-
-            <Link href="/contact" className="text-link">
-              <span>Start a conversation</span>
-              <svg
-                width="15"
-                height="15"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                aria-hidden="true"
-              >
-                <path d="M7 7h10v10" />
-                <path d="M7 17 17 7" />
-              </svg>
-            </Link>
           </div>
         </div>
       </div>
@@ -162,7 +181,7 @@ export default function HeroSection() {
             <path d="m19 12-7 7-7-7" />
           </svg>
         </a>
-        <span className="hidden sm:inline">BUILDING SINCE 2024</span>
+        <span className="hidden sm:inline">BUILDING SINCE {site.startYear}</span>
         <span className="hero-edition">AN ONGOING EXPLORATION ↗</span>
       </div>
     </section>

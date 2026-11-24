@@ -6,7 +6,11 @@ import SmoothScroll from "@/components/SmoothScroll";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import ScrollProgress from "@/components/ScrollProgress";
-import MotionToggle from "@/components/MotionToggle";
+import JsonLd from "@/components/JsonLd";
+import ReferralGreeting from "@/components/ReferralGreeting";
+import { Analytics } from "@vercel/analytics/next";
+import { personSchema, websiteSchema } from "@/lib/schema";
+import { buildMetadata } from "@/lib/seo";
 import { site } from "@/lib/content";
 
 const dmSans = DM_Sans({
@@ -32,25 +36,16 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Varun Nair | Infrastructure, Security & Cloud",
-  description:
-    "DevOps, cloud, infrastructure and security engineering — systems, automation and AI operations.",
-  metadataBase: new URL("https://varun-portfolio-rouge.vercel.app"),
-  alternates: {
-    canonical: "/",
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
-  openGraph: {
-    title: "Varun Nair | Infrastructure, Security & Cloud",
+  ...buildMetadata({
+    title: "Varun Nair | DevOps, SRE & Platform Intern, Mumbai",
     description:
-      "DevOps, cloud, infrastructure and security engineering — systems, automation and AI operations.",
-    locale: "en_IN",
-    type: "website",
-    siteName: "Varun Nair Portfolio",
-  },
+      "Platform, DevOps and SRE intern in Mumbai, available Dec 2026 to Jun 2027. Six infrastructure case studies with methodology and stated limits.",
+    path: "/",
+  }),
+  metadataBase: new URL(site.url),
+  applicationName: `${site.name} — Portfolio`,
+  authors: [{ name: site.name, url: site.url }],
+  creator: site.name,
 };
 
 export const viewport: Viewport = {
@@ -64,44 +59,13 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    name: "Varun Nair",
-    jobTitle: "Infrastructure & Security Engineer",
-    alumniOf: {
-      "@type": "EducationalOrganization",
-      name: "VESIT",
-    },
-    knowsAbout: [
-      "DevOps",
-      "Cloud",
-      "Kubernetes",
-      "DevSecOps",
-      "AIOps",
-      "Linux",
-      "Terraform",
-      "Observability",
-    ],
-    sameAs: [
-      "https://github.com/coderv1304",
-      "https://www.linkedin.com/in/connectvarun13",
-      "https://varun-nair-13.hashnode.dev/",
-    ],
-    url: "https://varun-portfolio-rouge.vercel.app",
-    email: site.email,
-  };
-
   return (
     <html
       lang="en"
       className={`${dmSans.variable} ${instrumentSerif.variable} ${jetbrainsMono.variable}`}
     >
       <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
+        <JsonLd data={{ "@graph": [personSchema(), websiteSchema()] }} />
       </head>
       <body>
         <SmoothScroll>
@@ -116,16 +80,20 @@ export default function RootLayout({
           {/* Scene backdrop */}
           <div className="scene-backdrop" aria-hidden="true" />
 
-          {/* Motion toggle fixed bottom-left */}
-          <MotionToggle />
-
           {/* Floating pill navigation */}
           <Navigation />
+
+          {/* Visible referral greeting, only when ?ref= is present */}
+          <ReferralGreeting />
 
           {children}
 
           {/* Footer */}
           <Footer />
+
+          {/* Vercel Web Analytics only exists on a Vercel deployment; gating it
+              keeps local Lighthouse runs free of a 404 console error. */}
+          {process.env.VERCEL ? <Analytics /> : null}
         </SmoothScroll>
       </body>
     </html>

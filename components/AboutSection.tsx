@@ -27,7 +27,7 @@ export default function AboutSection() {
           }}
         >
           <span className="eyebrow-label">
-            01 / THE PERSON BEHIND THE SYSTEMS
+            04 / THE PERSON BEHIND THE SYSTEMS
           </span>
           <span className="eyebrow-label" style={{ color: "var(--accent)" }}>
             A CONNECTED PERSPECTIVE

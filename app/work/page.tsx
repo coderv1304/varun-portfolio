@@ -1,12 +1,17 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import JsonLd from "@/components/JsonLd";
 import { projects } from "@/lib/content";
+import { collectionPageSchema } from "@/lib/schema";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Work | Varun Nair",
-  description: "Systems, platforms, and open-source infrastructure projects by Varun Nair.",
-};
+export const metadata: Metadata = buildMetadata({
+  title: "Selected work | Varun Nair",
+  description:
+    "Six systems with measured results: approval-gated Kubernetes remediation, 38× alert reduction, encrypted backups, and cloud incident response.",
+  path: "/work",
+});
 
 export default function WorkPage() {
   return (
@@ -17,6 +22,18 @@ export default function WorkPage() {
         minHeight: "100vh",
       }}
     >
+      <JsonLd
+        data={collectionPageSchema({
+          path: "/work",
+          name: "Selected work",
+          description:
+            "Six infrastructure and security systems with documented results and limits.",
+          items: projects.map((project) => ({
+            name: project.title,
+            path: `/work/${project.slug}`,
+          })),
+        })}
+      />
       <div style={{ maxWidth: "var(--maxw)", margin: "0 auto" }}>
         {/* Section Label */}
         <div
@@ -31,7 +48,7 @@ export default function WorkPage() {
         >
           <span className="eyebrow-label">02 / WORK ARCHIVE</span>
           <span className="eyebrow-label" style={{ color: "var(--accent)" }}>
-            SEVEN SYSTEMS. RUNNING CODE.
+            SIX SYSTEMS. RUNNING CODE.
           </span>
         </div>
 
